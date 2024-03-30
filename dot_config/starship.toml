@@ -19,10 +19,15 @@ $time\
 
 [status]
 disabled = false
+format = "[symbolstatus](style) "
 
 [character]
 success_symbol = '[╰─❯](bold rosewater) '
 error_symbol = '[╰─$status✗](bold red) '
+vimcmd_replace_symbol = "[╰─❮R❯](bold pink)"
+vimcmd_replace_one_symbol = "[╰─❮r❯](bold pink)"
+vimcmd_visual_symbol = "[╰─❮V❯](bold maroon)"
+vimcmd_symbol = "[╰─❮N❯](bold sky)"
 
 [directory]
 style = "fg:base bg:lavender"

@@ -2,6 +2,8 @@ if status is-interactive
 
 # Commands to run in interactive sessions can go here
 
+fish_vi_key_bindings
+
 # Configure path for localb
 fish_add_path "$HOME"/.local/bin
 fish_add_path /home/linuxbrew/.linuxbrew/bin

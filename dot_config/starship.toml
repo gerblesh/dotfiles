@@ -17,9 +17,12 @@ $time\
 [ ](fg:mantle)\
 \n$character"""
 
+[status]
+disabled = false
+
 [character]
 success_symbol = '[╰─❯](bold rosewater) '
-error_symbol = '[╰─✗](bold red) '
+error_symbol = '[╰─$status✗](bold red) '
 
 [directory]
 style = "fg:base bg:lavender"

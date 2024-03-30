@@ -1,10 +1,12 @@
 if status is-interactive
+
 # Commands to run in interactive sessions can go here
 
 # Configure path for localb
 fish_add_path "$HOME"/.local/bin
 fish_add_path /home/linuxbrew/.linuxbrew/bin
 fish_add_path /home/linuxbrew/.linuxbrew/sbin
+fish_add_path "$HOME"/.cargo/bin
 
 function fish_greeting
 # blank fish greeting
@@ -39,7 +41,6 @@ end
 if test -d (brew --prefix)"/share/fish/vendor_completions.d"
     set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
 end
-
 
 end
 

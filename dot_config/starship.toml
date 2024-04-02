@@ -15,17 +15,27 @@ $php\
 [](fg:base bg:mantle)\
 $time\
 [ ](fg:mantle)\
+$cmd_duration \
+$status \
 \n$character"""
 
 [status]
+#pipestatus = true
 disabled = false
-format = "[symbolstatus](style) "
+format = "[$status]($style)"
+
+[cmd_duration]
+format = '[took $duration]($style) '
+style = 'bold surface0'
+disabled = false
+min_time = 0
+
 
 [character]
 success_symbol = '[╰─❯](bold rosewater) '
 error_symbol = '[╰─$status✗](bold red) '
 vimcmd_replace_symbol = "[╰─❮R❯](bold pink)"
-vimcmd_replace_one_symbol = "[╰─❮r❯](bold pink)"
+vimcmd_replace_one_symbol = "[╰─❮r❯](bold purple)"
 vimcmd_visual_symbol = "[╰─❮V❯](bold maroon)"
 vimcmd_symbol = "[╰─❮N❯](bold sky)"
 

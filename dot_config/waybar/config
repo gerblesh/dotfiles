@@ -1,3 +1,4 @@
+// vim:ft=jsonc
 // =============================================================================
 //
 // Waybar configuration
@@ -148,6 +149,7 @@
             "class<Godot>": "",
             "title<.*discord.*>": "󰙯",
             "foot": "",
+            "kitty": "",
             "brave-browser": "",
             "pragtical": "",
             "dev.alextren.spot": "",

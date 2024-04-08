@@ -47,6 +47,8 @@ if which nvim > /dev/null 2>&1
     alias nano="nvim"
 end
 
+set EDITOR /usr/bin/vi
+
 if which zoxide > /dev/null 2>&1
     eval (zoxide init --cmd cd fish | source) > /dev/null 2>&1
 end

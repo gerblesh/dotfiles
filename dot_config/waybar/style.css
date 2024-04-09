@@ -159,11 +159,11 @@
 
 
 #workspaces button:hover,
-#workspaces button.active {
+#workspaces button.focused {
     transition: all 0.3s;
 }
 
-#workspaces button.active {
+#workspaces button.focused {
     padding-right: 14px;
     padding-left: 14px;
     background-color: @primary;

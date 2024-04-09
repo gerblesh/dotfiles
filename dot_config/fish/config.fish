@@ -19,10 +19,10 @@ set fish_cursor_visual block
 fish_vi_key_bindings
 
 # Configure path for localb
-fish_add_path "$HOME"/.local/bin
-fish_add_path /home/linuxbrew/.linuxbrew/bin
-fish_add_path /home/linuxbrew/.linuxbrew/sbin
-fish_add_path "$HOME"/.cargo/bin
+fish_add_path -P --append "$HOME"/.local/bin
+fish_add_path -P --append /home/linuxbrew/.linuxbrew/bin
+fish_add_path -P --append /home/linuxbrew/.linuxbrew/sbin
+fish_add_path -P --append "$HOME"/.cargo/bin
 
 function fish_greeting
 # blank fish greeting

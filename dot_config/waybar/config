@@ -19,7 +19,7 @@
 
     "modules-left": [
         "tray",
-        "hyprland/workspaces",
+        "sway/workspaces",
         "mpris",
     ],
     "modules-center": [

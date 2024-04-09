@@ -1,3 +1,3 @@
 #!/usr/bin/fish
 #echo $?
-kitty nvim "$argv"
+foot nvim "$argv"

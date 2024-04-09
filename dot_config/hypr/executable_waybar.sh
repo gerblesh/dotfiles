@@ -1,3 +1,3 @@
 PID=$(pidof waybar)
 kill $PID
-waybar
+waybar --config ~/.config/waybar/config.hypr --style ~/.config/waybar/style.css.hypr

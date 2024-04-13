@@ -37,7 +37,7 @@ config.default_prog = { "/bin/fish" }
 config.set_environment_variables = {
 	SHELL = "/bin/fish",
 }
-config.term = "wezterm"
+-- config.term = "wezterm"
 
 -- appearance
 config.font = wezterm.font("JetBrainsMonoNerdFont")
@@ -57,6 +57,7 @@ custom.tab_bar.background = catppuccin_mocha.crust
 config.color_schemes = { ["custom"] = custom }
 config.color_scheme = "custom"
 config.show_new_tab_button_in_tab_bar = false
+config.tab_max_width = 20
 
 config.inactive_pane_hsb = {
 	saturation = 1.0,
@@ -192,6 +193,22 @@ config.keys = {
 		key = "s",
 		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY | WORKSPACES" }),
 	},
+	{ key = "1", mods = "LEADER", action = wezterm.action({ ActivateTab = 0 }) },
+	{ key = "2", mods = "LEADER", action = wezterm.action({ ActivateTab = 1 }) },
+	{ key = "3", mods = "LEADER", action = wezterm.action({ ActivateTab = 2 }) },
+	{ key = "4", mods = "LEADER", action = wezterm.action({ ActivateTab = 3 }) },
+	{ key = "5", mods = "LEADER", action = wezterm.action({ ActivateTab = 4 }) },
+	{ key = "6", mods = "LEADER", action = wezterm.action({ ActivateTab = 5 }) },
+	{ key = "7", mods = "LEADER", action = wezterm.action({ ActivateTab = 6 }) },
+	{ key = "8", mods = "LEADER", action = wezterm.action({ ActivateTab = 7 }) },
+	{ key = "9", mods = "LEADER", action = wezterm.action({ ActivateTab = 8 }) },
+
+	{ key = "l", mods = "ALT|SHIFT", action = wezterm.action.ActivateTabRelative(1) },
+	{ key = "h", mods = "ALT|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
+	-- Activate Copy Mode
+	{ key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+	-- Paste from Copy Mode
+	{ key = "]", mods = "LEADER", action = wezterm.action.PasteFrom("PrimarySelection") },
 }
 
 return config

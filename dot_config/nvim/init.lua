@@ -237,41 +237,53 @@ require("lazy").setup({
 	--
 	--  This is equivalent to:
 	--    require('Comment').setup({})
-	--	{
-	--		"christoomey/vim-tmux-navigator",
-	--		cmd = {
-	--			"TmuxNavigateLeft",
-	--			"TmuxNavigateDown",
-	--			"TmuxNavigateUp",
-	--			"TmuxNavigateRight",
-	--			"TmuxNavigatePrevious",
-	--		},
-	--		keys = {
-	--			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-	--			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-	--			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-	--			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-	--			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-	--		},
-	--	},
+	--
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		config = true,
+	},
+	{
+		"nvim-neorg/neorg",
+		dependencies = { "luarocks.nvim" },
+		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+		version = "*", -- Pin Neorg to the latest stable release
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {},
+					["core.concealer"] = {},
+					["core.dirman"] = {
+						config = {
+							workspaces = { notes = "~/Documents/Neorg" },
+						},
+						default_workspace = "notes",
+					},
+				},
+			})
+		end,
+	},
 	-- "gc" to comment visual regions/lines
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
-		"christoomey/vim-tmux-navigator",
-		cmd = {
-			"TmuxNavigateLeft",
-			"TmuxNavigateDown",
-			"TmuxNavigateUp",
-			"TmuxNavigateRight",
-			"TmuxNavigatePrevious",
-		},
-		keys = {
-			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-		},
+		"mrjones2014/smart-splits.nvim",
+		lazy = false,
+		config = function()
+			vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
+			vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
+			vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
+			vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+			-- moving between splits
+			vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+			vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+			vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+			vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+			-- swapping buffers between windows
+			vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
+			vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
+			vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
+			vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
+		end,
 	},
 
 	-- Here is a more advanced example where we pass configuration
@@ -410,6 +422,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 			vim.keymap.set("n", "<leader>sp", builtin.registers, { desc = "[S]search [P]aste registers" })
+			vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[S]earch [C]ommands" })
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set("n", "<leader>/", function()
@@ -577,10 +590,12 @@ require("lazy").setup({
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				-- clangd = {},
-				-- gopls = {},
-				-- pyright = {},
-				-- rust_analyzer = {},
+				clangd = {},
+				gopls = {},
+				marksman = {},
+				ruff = {},
+				ruff_lsp = {},
+				rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -607,7 +622,9 @@ require("lazy").setup({
 			}
 			-- Seperate LSPs for Godot (not in mason.nvim)
 			require("lspconfig")["gdshader_lsp"].setup({})
-			require("lspconfig")["gdscript"].setup({})
+			require("lspconfig")["gdscript"].setup({
+				flags = { debounce_text_changes = 150 },
+			})
 
 			-- Ensure the servers and tools above are installed
 			--  To check the current status of installed tools and/or manually install
@@ -622,7 +639,7 @@ require("lazy").setup({
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format lua code
-				"marksman",
+				"gdtoolkit",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -735,7 +752,7 @@ require("lazy").setup({
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.
 					--  This will expand snippets if the LSP sent a snippet.
-					["<C-a>"] = cmp.mapping.confirm({ select = true }),
+					["<C-Enter>"] = cmp.mapping.confirm({ select = true }),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
@@ -876,7 +893,18 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc", "markdown_inline" },
+			ensure_installed = {
+				"bash",
+				"c",
+				"html",
+				"lua",
+				"markdown",
+				"vim",
+				"vimdoc",
+				"markdown_inline",
+				"cpp",
+				"gdscript",
+			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = {

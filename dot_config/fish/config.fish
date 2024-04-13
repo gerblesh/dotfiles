@@ -1,27 +1,39 @@
 if status is-interactive
 
-set fish_cursor_default block
-# Set the insert mode cursor to a line
-set fish_cursor_insert line
-# Set the replace mode cursors to an underscore
-set fish_cursor_replace_one underscore
-set fish_cursor_replace underscore
-# Set the external cursor to a line. The external cursor appears when a command is started.
-# The cursor shape takes the value of fish_cursor_default when fish_cursor_external is not specified.
-set fish_cursor_external line
-# The following variable can be used to configure cursor shape in
-# visual mode, but due to fish_cursor_default, is redundant here
-set fish_cursor_visual block
+
+function setup_vi_mode
+    set -Ux fish_cursor_default block
+    # Set the insert mode cursor to a line
+    set -Ux fish_cursor_insert line
+    # Set the replace mode cursors to an underscore
+    set -Ux fish_cursor_replace_one underscore
+    set -Ux fish_cursor_replace underscore
+    # Set the external cursor to a line. The external cursor appears when a command is started.
+    # The cursor shape takes the value of fish_cursor_default when fish_cursor_external is not specified.
+    set -Ux fish_cursor_external line
+    # The following variable can be used to configure cursor shape in
+    # visual mode, but due to fish_cursor_default, is redundant here
+    set -Ux fish_cursor_visual block
+
+    # Commands to run in interactive sessions can go here
+    fish_vi_key_bindings
+end
+
+set fish_vi_force_cursor 1
+
+function setup_homebrew
+    fish_add_path -P --append /home/linuxbrew/.linuxbrew/bin
+    fish_add_path -P --append /home/linuxbrew/.linuxbrew/sbin
+    set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew";
+    set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar";
+    set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew";
+end
 
 
-# Commands to run in interactive sessions can go here
-
-fish_vi_key_bindings
-
-# Configure path for localb
+setup_vi_mode
+setup_homebrew
+# Configure path for localbin
 fish_add_path -P --append "$HOME"/.local/bin
-fish_add_path -P --append /home/linuxbrew/.linuxbrew/bin
-fish_add_path -P --append /home/linuxbrew/.linuxbrew/sbin
 fish_add_path -P --append "$HOME"/.cargo/bin
 
 function fish_greeting

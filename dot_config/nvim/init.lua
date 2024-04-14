@@ -237,7 +237,17 @@ require("lazy").setup({
 	--
 	--  This is equivalent to:
 	--    require('Comment').setup({})
-	--
+	{
+		"DreamMaoMao/yazi.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+
+		keys = {
+			{ "<leader>gy", "<cmd>Yazi<CR>", desc = "Toggle Yazi" },
+		},
+	},
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1000,

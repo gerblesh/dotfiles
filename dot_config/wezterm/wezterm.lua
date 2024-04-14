@@ -38,7 +38,12 @@ config.set_environment_variables = {
 	SHELL = "/bin/fish",
 }
 -- config.term = "wezterm"
-
+-- config.unix_domains = {
+-- 	{
+-- 		name = "unix",
+-- 	},
+-- }
+-- config.default_gui_startup_args = { "connect", "unix" }
 -- appearance
 config.font = wezterm.font("JetBrainsMonoNerdFont")
 config.font_size = 15.0
@@ -60,7 +65,7 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 20
 
 config.inactive_pane_hsb = {
-	saturation = 1.0,
+	saturation = 0.9,
 	brightness = 1.0,
 }
 
@@ -160,7 +165,7 @@ config.keys = {
 	split_nav("resize", "l"),
 	{
 		mods = "LEADER",
-		key = "h",
+		key = "s",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
@@ -180,18 +185,13 @@ config.keys = {
 	},
 	{
 		mods = "LEADER",
-		key = "x",
+		key = "q",
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
 	{
 		mods = "LEADER",
 		key = "k",
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
-	},
-	{
-		mods = "LEADER",
-		key = "s",
-		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY | WORKSPACES" }),
 	},
 	{ key = "1", mods = "LEADER", action = wezterm.action({ ActivateTab = 0 }) },
 	{ key = "2", mods = "LEADER", action = wezterm.action({ ActivateTab = 1 }) },
@@ -208,6 +208,54 @@ config.keys = {
 	-- Activate Copy Mode
 	{ key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
 	-- Paste from Copy Mode
+	{
+		key = "h",
+		mods = "LEADER",
+		action = wezterm.action_callback(function(window, pane)
+			-- Here you can dynamically construct a longer list if needed
+			local home = wezterm.home_dir
+			local workspaces = {
+				{ id = home, label = "default" },
+				{ id = home, label = "Home" },
+				{ id = home .. "/Documents/Rust/", label = "Rust" },
+				{ id = home .. "/Documents/go-projects/", label = "Golang" },
+				{ id = home .. "/Documents/C/", label = "C" },
+				{ id = home .. "/Documents/csharp/", label = "C Sharp" },
+				{ id = home .. "/Documents/Processing/", label = "Processing" },
+				{ id = home .. "/Documents/Godot Projects/", label = "Godot" },
+				{ id = home .. "/Documents/Neorg/", label = "Neorg" },
+				{ id = home .. "/.config", label = "Config" },
+			}
+
+			window:perform_action(
+				wezterm.action.InputSelector({
+					action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
+						if not id and not label then
+							wezterm.log_info("cancelled")
+						else
+							wezterm.log_info("id = " .. id)
+							wezterm.log_info("label = " .. label)
+							inner_window:perform_action(
+								wezterm.action.SwitchToWorkspace({
+									name = label,
+									spawn = {
+										label = "Workspace: " .. label,
+										cwd = id,
+									},
+								}),
+								inner_pane
+							)
+						end
+					end),
+					title = "Choose Workspace",
+					choices = workspaces,
+					fuzzy = true,
+					fuzzy_description = "Fuzzy find and/or make a workspace 󱝩 ",
+				}),
+				pane
+			)
+		end),
+	},
 	{ key = "]", mods = "LEADER", action = wezterm.action.PasteFrom("PrimarySelection") },
 }
 

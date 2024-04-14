@@ -20,6 +20,7 @@
     "modules-left": [
         "tray",
         "sway/workspaces",
+        "sway/mode",
         "mpris",
     ],
     "modules-center": [

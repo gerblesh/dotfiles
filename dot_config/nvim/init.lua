@@ -1,90 +1,4 @@
---[[
-
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-========                                    .-----.          ========
-========         .----------------------.   | === |          ========
-========         |.-""""""""""""""""""-.|   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||   KICKSTART.NVIM   ||   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||                    ||   |-----|          ========
-========         ||:Tutor              ||   |:::::|          ========
-========         |'-..................-'|   |____o|          ========
-========         `"")----------------(""`   ___________      ========
-========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-========       /:::========|  |==hjkl==:::\  \ required \    ========
-========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
-========                                                     ========
-=====================================================================
-=====================================================================
-
-What is Kickstart?
-
-  Kickstart.nvim is *not* a distribution.
-
-  Kickstart.nvim is a starting point for your own configuration.
-    The goal is that you can read every line of code, top-to-bottom, understand
-    what your configuration is doing, and modify it to suit your needs.
-
-    Once you've done that, you can start exploring, configuring and tinkering to
-    make Neovim your own! That might mean leaving kickstart just the way it is for a while
-    or immediately breaking it into modular pieces. It's up to you!
-
-    If you don't know anything about Lua, I recommend taking some time to read through
-    a guide. One possible example which will only take 10-15 minutes:
-      - https://learnxinyminutes.com/docs/lua/
-
-    After understanding a bit more about Lua, you can use `:help lua-guide` as a
-    reference for how Neovim integrates Lua.
-    - :help lua-guide
-    - (or HTML version): https://neovim.io/doc/user/lua-guide.html
-
-Kickstart Guide:
-
-  TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
-
-    If you don't know what this means, type the following:
-      - <escape key>
-      - :
-      - Tutor
-      - <enter key>
-
-    (If you already know how the Neovim basics, you can skip this step)
-
-  Once you've completed that, you can continue working through **AND READING** the rest
-  of the kickstart init.lua
-
-  Next, run AND READ `:help`.
-    This will open up a help window with some basic information
-    about reading, navigating and searching the builtin help documentation.
-
-    This should be the first place you go to look when you're stuck or confused
-    with something. It's one of my favorite neovim features.
-
-    MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
-    which is very useful when you're not sure exactly what you're looking for.
-
-  I have left several `:help X` comments throughout the init.lua
-    These are hints about where to find more information about the relevant settings,
-    plugins or neovim features used in kickstart.
-
-   NOTE: Look for lines like this
-
-    Throughout the file. These are for you, the reader, to help understand what is happening.
-    Feel free to delete them once you know what you're doing, but they should serve as a guide
-    for when you are first encountering a few different constructs in your nvim config.
-
-If you experience any errors while trying to install kickstart, run `:checkhealth` for more info
-
-I hope you enjoy your Neovim journey,
-- TJ
-
-P.S. You can delete this when you're done too. It's your config now! :)
---]]
-
--- Set <space> as the leader key
+--- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
@@ -101,20 +15,13 @@ vim.g.have_nerd_font = true
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
--- You can also add relative line numbers, for help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.linebreak = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = "a"
+vim.opt.mouse = ""
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -162,6 +69,12 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.keymap.set("x", "<leader>pd", [["_dP]], { desc = "[P]aste and [D]elete" })
+vim.keymap.set("n", "<leader>ps", [["+P]], { desc = "[P]aste from [S]ystem clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "[Y]ank to system clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank line to system clipboard" })
+
+vim.keymap.set("i", "jk", "<Esc>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
@@ -177,10 +90,10 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -261,6 +174,7 @@ require("lazy").setup({
 		config = function()
 			require("neorg").setup({
 				load = {
+					["core.export"] = {},
 					["core.defaults"] = {},
 					["core.concealer"] = {},
 					["core.dirman"] = {
@@ -289,10 +203,10 @@ require("lazy").setup({
 			vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
 			vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
 			-- swapping buffers between windows
-			vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
-			vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
-			vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
-			vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
+			-- vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
+			-- vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
+			-- vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
+			-- vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
 		end,
 	},
 
@@ -424,6 +338,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			vim.keymap.set("n", "<leader>f", builtin.git_files, { desc = "Search git [F]iles" })
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
@@ -624,6 +539,9 @@ require("lazy").setup({
 							completion = {
 								callSnippet = "Replace",
 							},
+							diagnostics = {
+								globals = { "vim" },
+							},
 							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
 							-- diagnostics = { disable = { 'missing-fields' } },
 						},
@@ -801,18 +719,18 @@ require("lazy").setup({
 				},
 			})
 			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline({ "/", "?" }, {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = {
-					{ name = "buffer" },
-				},
-			})
-
-			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
-			})
+			-- cmp.setup.cmdline({ "/", "?" }, {
+			-- 	mapping = cmp.mapping.preset.cmdline(),
+			-- 	sources = {
+			-- 		{ name = "buffer" },
+			-- 	},
+			-- })
+			--
+			-- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+			-- cmp.setup.cmdline(":", {
+			-- 	mapping = cmp.mapping.preset.cmdline(),
+			-- 	sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
+			-- })
 		end,
 	},
 
@@ -882,20 +800,38 @@ require("lazy").setup({
 			-- simple and easy statusline.
 			--  you could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
-			local statusline = require("mini.statusline")
+			-- local statusline = require("mini.statusline")
 			-- set use_icons to true if you have a nerd font
-			statusline.setup({ use_icons = vim.g.have_nerd_font })
-
-			-- you can configure sections in the statusline by overriding their
-			-- default behavior. for example, here we set the section for
-			-- cursor location to line:column
-			---@diagnostic disable-next-line: duplicate-set-field
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
+			-- statusline.setup({ use_icons = vim.g.have_nerd_font })
+			--
+			-- -- you can configure sections in the statusline by overriding their
+			-- -- default behavior. for example, here we set the section for
+			-- -- cursor location to line:column
+			-- ---@diagnostic disable-next-line: duplicate-set-field
+			-- statusline.section_location = function()
+			-- 	return "%2l:%-2v"
+			-- end
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
+		end,
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- opts = {
+		-- 	theme = "catppuccin",
+		-- 	component_separators = { left = "a", right = "b" },
+		-- 	section_separators = { left = "d", right = "c" },
+		-- },
+		config = function()
+			require("lualine").setup({
+				options = {
+					theme = "catppuccin",
+					section_separators = { left = "", right = "" },
+					component_separators = { left = "", right = "" },
+				},
+			})
 		end,
 	},
 

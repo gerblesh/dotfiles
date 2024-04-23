@@ -38,18 +38,20 @@ config.set_environment_variables = {
 	SHELL = "/bin/fish",
 }
 -- config.term = "wezterm"
--- config.unix_domains = {
+--  config.unix_domains = {
 -- 	{
 -- 		name = "unix",
+-- 		local_echo_threshold_ms = 10,
 -- 	},
 -- }
 -- config.default_gui_startup_args = { "connect", "unix" }
+
 -- appearance
 config.font = wezterm.font("JetBrainsMonoNerdFont")
 config.font_size = 15.0
 config.enable_wayland = true
 config.use_fancy_tab_bar = false
-config.window_background_opacity = 0.97
+config.window_background_opacity = 0.9
 config.hide_tab_bar_if_only_one_tab = false
 config.window_padding = {
 	left = 3,
@@ -84,6 +86,21 @@ wezterm.on("update-right-status", function(window, pane)
 		{ Background = { Color = catppuccin_mocha.base } },
 		{ Text = " " .. window:active_workspace() .. " " },
 	}
+
+	for _, value in ipairs(wezterm.mux.get_workspace_names()) do
+		if value == window:active_workspace() then
+			goto continue
+		end
+		table.insert(elements, { Foreground = { Color = catppuccin_mocha.blue } })
+		table.insert(elements, { Text = "" })
+		table.insert(elements, { Foreground = { Color = catppuccin_mocha.base } })
+		table.insert(elements, { Background = { Color = catppuccin_mocha.blue } })
+		table.insert(elements, { Text = " " })
+		table.insert(elements, { Foreground = { Color = catppuccin_mocha.text } })
+		table.insert(elements, { Background = { Color = catppuccin_mocha.base } })
+		table.insert(elements, { Text = " " .. value .. " " })
+		::continue::
+	end
 	window:set_right_status(wezterm.format(elements))
 end)
 
@@ -189,9 +206,19 @@ config.keys = {
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
 	{
+		mods = "LEADER|SHIFT",
+		key = "q",
+		action = wezterm.action.CloseCurrentTab({ confirm = false }),
+	},
+	{
 		mods = "LEADER",
 		key = "k",
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+	},
+	{
+		mods = "LEADER",
+		key = "n",
+		action = wezterm.action.SpawnCommandInNewTab({ args = { "/usr/bin/fish", "-liC", "nvim" } }),
 	},
 	{ key = "1", mods = "LEADER", action = wezterm.action({ ActivateTab = 0 }) },
 	{ key = "2", mods = "LEADER", action = wezterm.action({ ActivateTab = 1 }) },
@@ -208,6 +235,7 @@ config.keys = {
 	-- Activate Copy Mode
 	{ key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
 	-- Paste from Copy Mode
+	{ key = "]", mods = "LEADER", action = wezterm.action.PasteFrom("PrimarySelection") },
 	{
 		key = "h",
 		mods = "LEADER",
@@ -224,7 +252,8 @@ config.keys = {
 				{ id = home .. "/Documents/Processing/", label = "Processing" },
 				{ id = home .. "/Documents/Godot Projects/", label = "Godot" },
 				{ id = home .. "/Documents/Neorg/", label = "Neorg" },
-				{ id = home .. "/.config", label = "Config" },
+				{ id = home .. "/.config/", label = "Config" },
+				{ id = home .. "/Documents/Ublue/", label = "Universal Blue" },
 			}
 
 			window:perform_action(
@@ -256,7 +285,6 @@ config.keys = {
 			)
 		end),
 	},
-	{ key = "]", mods = "LEADER", action = wezterm.action.PasteFrom("PrimarySelection") },
 }
 
 return config

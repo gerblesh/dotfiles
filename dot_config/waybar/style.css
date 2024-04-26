@@ -61,6 +61,7 @@
 }
 
 /* Each module */
+#privacy-item,
 #pulseaudio-slider,
 #custom-power-profile,
 #workspaces button,
@@ -85,7 +86,11 @@
     border-bottom: 3px solid @underline;
 }
 
-
+tooltip {
+  background: @base;
+  border: 2px solid @crust;
+  border-radius: 4px;
+}
 /* -----------------------------------------------------------------------------
  * Module styles
  * -------------------------------------------------------------------------- */
@@ -112,6 +117,19 @@
 
 #battery {
     background-color: @primary;
+}
+
+
+#privacy-item.audio-out {
+    background-color: @teal;
+}
+
+#privacy-item.audio-in {
+    background-color: @warning;
+}
+
+#privacy-item.screenshare {
+    background-color: @urgent;
 }
 
 #clock {

@@ -38,10 +38,10 @@ config.set_environment_variables = {
 	SHELL = "/bin/fish",
 }
 -- config.term = "wezterm"
---  config.unix_domains = {
+-- config.unix_domains = {
 -- 	{
 -- 		name = "unix",
--- 		local_echo_threshold_ms = 10,
+-- 		local_echo_threshold_ms = 300,
 -- 	},
 -- }
 -- config.default_gui_startup_args = { "connect", "unix" }
@@ -131,10 +131,10 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 end)
 -- keymaps
 
-local function is_vim(pane)
-	-- this is set by the plugin, and unset on ExitPre in Neovim
-	return pane:get_user_vars().IS_NVIM == "true"
-end
+-- local function is_vim(pane)
+-- 	-- this is set by the plugin, and unset on ExitPre in Neovim
+-- 	return pane:get_user_vars().IS_NVIM == "true"
+-- end
 
 local direction_keys = {
 	Left = "h",
@@ -147,28 +147,33 @@ local direction_keys = {
 	k = "Up",
 	l = "Right",
 }
-
+--
 local function split_nav(resize_or_move, key)
 	return {
 		key = key,
-		mods = resize_or_move == "resize" and "META" or "CTRL",
+		mods = resize_or_move == "resize" and "ALT" or "ALT|CTRL",
 		action = wezterm.action_callback(function(win, pane)
-			if is_vim(pane) then
-				-- pass the keys through to vim/nvim
-				win:perform_action({
-					SendKey = { key = key, mods = resize_or_move == "resize" and "META" or "CTRL" },
-				}, pane)
+			if resize_or_move == "resize" then
+				win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
 			else
-				if resize_or_move == "resize" then
-					win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
-				else
-					win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-				end
+				win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
 			end
+			-- if is_vim(pane) then
+			-- 	-- pass the keys through to vim/nvim
+			-- 	win:perform_action({
+			-- 		SendKey = { key = key, mods = resize_or_move == "resize" and "META" or "CTRL" },
+			-- 	}, pane)
+			-- else
+			-- 	if resize_or_move == "resize" then
+			-- 		win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
+			-- 	else
+			-- 		win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+			-- 	end
+			-- end
 		end),
 	}
 end
-
+--
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	split_nav("move", "h"),
@@ -212,7 +217,7 @@ config.keys = {
 	},
 	{
 		mods = "LEADER",
-		key = "k",
+		key = "c",
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
 	},
 	{

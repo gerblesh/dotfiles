@@ -173,8 +173,8 @@ local function split_nav(resize_or_move, key)
 		end),
 	}
 end
---
-config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
+
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	split_nav("move", "h"),
 	split_nav("move", "j"),

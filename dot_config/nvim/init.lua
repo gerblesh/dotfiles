@@ -850,6 +850,7 @@ require("lazy").setup({
 				"markdown_inline",
 				"cpp",
 				"gdscript",
+				"dockerfile",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,

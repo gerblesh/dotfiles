@@ -27,12 +27,10 @@
         "clock"
       ],
       "modules-right": [
-        "privacy",
         "pulseaudio",
         "backlight",
-        "custom/power-profile",
         "battery",
-        "idle_inhibitor"
+        "idle_inhibitor",
       ],
 
       // -------------------------------------------------------------------------
@@ -86,8 +84,7 @@
         ]
       },
       "clock": {
-        "format": "{:%H:%M}  ",
-        "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+        "format": "{:%A, %B %d, %Y (%R)}  ",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
           "mode": "year",

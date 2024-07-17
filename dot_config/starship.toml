@@ -13,6 +13,7 @@ $rust\
 $golang\
 $php\
 [](fg:base bg:mantle)\
+$time\
 [ ](fg:mantle)\
 $cmd_duration \
 $status \

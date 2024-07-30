@@ -1,6 +1,10 @@
 fish_add_path -P --prepend "$HOME"/.local/bin
 if status is-interactive
 
+    enable_transience
+    function starship_transient_prompt_func
+      starship module character
+    end
     function yy
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
         yazi $argv --cwd-file="$tmp"

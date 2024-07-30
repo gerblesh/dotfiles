@@ -11,10 +11,7 @@ $git_status\
 $nodejs\
 $rust\
 $golang\
-$php\
-[](fg:base bg:mantle)\
-$time\
-[ ](fg:mantle)\
+$php \
 $cmd_duration \
 $status \
 \n$character"""

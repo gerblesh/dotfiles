@@ -27,10 +27,12 @@
         "clock"
       ],
       "modules-right": [
+        "custom/power-profile",
         "pulseaudio",
         "backlight",
         "battery",
         "idle_inhibitor",
+        "custom/keyboard-layout"
       ],
 
       // -------------------------------------------------------------------------

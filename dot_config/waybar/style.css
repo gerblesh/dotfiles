@@ -115,6 +115,7 @@ tooltip {
     background-color: @secondary;
 }
 
+#custom-keyboard-layout,
 #battery {
     background-color: @primary;
 }

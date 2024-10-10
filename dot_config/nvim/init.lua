@@ -520,7 +520,18 @@ require("lazy").setup({
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				clangd = {},
+				clangd = {
+					root_dir = require("lspconfig").util.root_pattern("compile_commands.json", ".git"),
+					settings = {
+						clangd = {
+							compileFlags = {
+								add = { "-Iinclude" }, -- Adjust include path
+							},
+						},
+					},
+				},
+				jdtls = {},
+
 				gopls = {},
 				marksman = {},
 				ruff = {},
@@ -679,8 +690,8 @@ require("lazy").setup({
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 
 					-- scroll the documentation window [b]ack / [f]orward
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-f>"] = cmp.mapping.scroll_docs(-4),
+					["<C-b>"] = cmp.mapping.scroll_docs(4),
 
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.

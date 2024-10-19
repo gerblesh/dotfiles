@@ -42,12 +42,13 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
 
     fish_add_path -P --prepend "$HOME"/.local/bin
     fish_add_path -P --append "$HOME"/.cargo/bin
+    set -Ux FZF_DEFAULT_OPTS "--color=fg:#ebdbb2,bg:#282828,hl:#b16286 --color=fg+:#689d6a,bg+:#32302f,hl+:#d3869b --color=info:#d65d0e,prompt:#458588,pointer:#fe8019 --color=marker:#8ec07c,spinner:#cc241d,header:#fabd2f --preview='fzf-preview.sh {}'"
 
-    set -Ux FZF_DEFAULT_OPTS "\
---color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---preview='fzf-preview.sh {}'"
+#     set -Ux FZF_DEFAULT_OPTS "\
+# --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
+# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+# --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+# --preview='fzf-preview.sh {}'"
     set SHELL "fish"
 
     setup_vi_mode

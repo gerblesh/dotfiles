@@ -1,0 +1,126 @@
+* {
+    bg-col:  #1d2021;
+    bg-col-light: #282828;
+    border-col: #1d2021;
+    selected-col: #689d6a;
+    blue: #458588;
+    fg-col: #ebdbb2;
+    grey: #928374;
+
+    width: 30%;
+    font: "JetBrainsMonoNerdFont 14";
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    height: 70%;
+    border: 4px;
+    border-color: @border-col;
+    background-color: @bg-col;
+}
+
+mainbox {
+    background-color: @bg-col;
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @bg-col;
+    border-radius: 3px;
+    margin: 20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 0px 0px 10px;
+    text-color: @fg-col;
+    background-color: @bg-col;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px 6px;
+    margin: 5px;
+    columns: 2;
+    lines: 5;
+    layout: vertical;
+    background-color: @bg-col;
+    fixed-columns: false;
+    fixed-height: true;
+}
+
+element {
+    margin: 5px;
+    padding: 2px;
+    background-color: @bg-col;
+    text-color: @fg-col  ;
+    orientation:    horizontal;
+    border-radius: 3px;
+}
+
+element-text {
+    highlight: underline bold;
+}
+
+element-text selected {
+    highlight: underline bold #11111b;
+}
+
+element-icon {
+    size: 1.5em;
+    anchor: center;
+    min-size: 0px;
+}
+
+element selected {
+    background-color:  @selected-col ;
+    text-color: @bg-col  ;
+}
+
+mode-switcher {
+    spacing: 0;
+  }
+
+button {
+    padding: 10px;
+    background-color: @bg-col-light;
+    text-color: @grey;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @bg-col;
+  text-color: @blue;
+}
+
+message {
+    background-color: @bg-col-light;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+textbox {
+    padding: 6px;
+    margin: 20px 0px 0px 20px;
+    text-color: @blue;
+    background-color: @bg-col-light;
+}

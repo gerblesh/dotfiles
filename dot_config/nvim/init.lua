@@ -89,12 +89,6 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
--- TIP: Disable arrow keys in normal mode
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
-
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
@@ -168,7 +162,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-neorg/neorg",
-		dependencies = { "luarocks.nvim" },
+		dependencies = { "luarocks.nvim", "nvim-neorg/lua-utils.nvim" },
 		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
 		version = "*", -- Pin Neorg to the latest stable release
 		config = function()
@@ -534,8 +528,6 @@ require("lazy").setup({
 
 				gopls = {},
 				marksman = {},
-				ruff = {},
-				ruff_lsp = {},
 				rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -583,7 +575,6 @@ require("lazy").setup({
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format lua code
-				"gdtoolkit",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -768,25 +759,33 @@ require("lazy").setup({
 	--		end,
 	--	},
 
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {
+	-- 		transparent_background = true,
+	-- 	},
+	-- 	init = function()
+	-- 		-- load the colorscheme here.
+	-- 		-- like many other themes, this one has different styles, and you could load
+	-- 		-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+	-- 		vim.cmd.colorscheme("catppuccin")
+	--
+	-- 		-- you can configure highlights by doing something like
+	-- 		vim.cmd.hi("comment gui=none")
+	-- 	end,
+	-- },
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		lazy = false,
+		"ellisonleao/gruvbox.nvim",
 		priority = 1000,
-		opts = {
-			transparent_background = true,
-		},
+		config = true,
+		opts = { transparent_mode = true },
 		init = function()
-			-- load the colorscheme here.
-			-- like many other themes, this one has different styles, and you could load
-			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("catppuccin")
-
-			-- you can configure highlights by doing something like
-			vim.cmd.hi("comment gui=none")
+			vim.cmd.colorscheme("gruvbox")
 		end,
 	},
-
 	-- highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
@@ -816,38 +815,20 @@ require("lazy").setup({
 			-- simple and easy statusline.
 			--  you could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
-			-- local statusline = require("mini.statusline")
+			local statusline = require("mini.statusline")
 			-- set use_icons to true if you have a nerd font
-			-- statusline.setup({ use_icons = vim.g.have_nerd_font })
+			statusline.setup({ use_icons = vim.g.have_nerd_font })
 			--
 			-- -- you can configure sections in the statusline by overriding their
 			-- -- default behavior. for example, here we set the section for
 			-- -- cursor location to line:column
 			-- ---@diagnostic disable-next-line: duplicate-set-field
-			-- statusline.section_location = function()
-			-- 	return "%2l:%-2v"
-			-- end
+			statusline.section_location = function()
+				return "%2l:%-2v"
+			end
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
-		end,
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		-- opts = {
-		-- 	theme = "catppuccin",
-		-- 	component_separators = { left = "a", right = "b" },
-		-- 	section_separators = { left = "d", right = "c" },
-		-- },
-		config = function()
-			require("lualine").setup({
-				options = {
-					theme = "catppuccin",
-					section_separators = { left = "", right = "" },
-					component_separators = { left = "", right = "" },
-				},
-			})
 		end,
 	},
 

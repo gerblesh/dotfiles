@@ -1,33 +1,4 @@
 -- Pull in the wezterm API
-local catppuccin_mocha = {
-	rosewater = "#f5e0dc",
-	flamingo = "#f2cdcd",
-	pink = "#f5c2e7",
-	mauve = "#cba6f7",
-	red = "#f38ba8",
-	maroon = "#eba0ac",
-	peach = "#fab387",
-	yellow = "#f9e2af",
-	green = "#a6e3a1",
-	teal = "#94e2d5",
-	sky = "#89dceb",
-	sapphire = "#74c7ec",
-	blue = "#89b4fa",
-	lavender = "#b4befe",
-	text = "#cdd6f4",
-	subtext1 = "#bac2de",
-	subtext0 = "#a6adc8",
-	overlay2 = "#9399b2",
-	overlay1 = "#7f849c",
-	overlay0 = "#6c7086",
-	surface2 = "#585b70",
-	surface1 = "#45475a",
-	surface0 = "#313244",
-	base = "#1e1e2e",
-	mantle = "#181825",
-	crust = "#11111b",
-}
-
 local wezterm = require("wezterm")
 
 -- This will hold the configuration.
@@ -59,12 +30,15 @@ config.window_padding = {
 	top = 3,
 	bottom = 3,
 }
-local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
-custom.tab_bar.background = catppuccin_mocha.crust
-config.color_schemes = { ["custom"] = custom }
-config.color_scheme = "custom"
+local gruvbox = wezterm.color.get_builtin_schemes()["GruvboxDark"]
+config.color_scheme = "GruvboxDark"
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 20
+config.colors = {
+	tab_bar = {
+		background = "#1d2021",
+	},
+}
 
 config.inactive_pane_hsb = {
 	saturation = 0.9,
@@ -72,18 +46,17 @@ config.inactive_pane_hsb = {
 }
 
 wezterm.on("update-right-status", function(window, pane)
-	local leader_color = catppuccin_mocha.green
+	local leader_color = gruvbox.ansi[7]
 	if window:leader_is_active() then
-		leader_color = catppuccin_mocha.red
+		leader_color = gruvbox.ansi[6]
 	end
 	local elements = {
 		{ Foreground = { Color = leader_color } },
-		{ Text = "" },
-		{ Foreground = { Color = catppuccin_mocha.base } },
+		{ Foreground = { Color = gruvbox.background } },
 		{ Background = { Color = leader_color } },
-		{ Text = " " },
-		{ Foreground = { Color = catppuccin_mocha.text } },
-		{ Background = { Color = catppuccin_mocha.base } },
+		{ Text = "  " },
+		{ Foreground = { Color = gruvbox.foreground } },
+		{ Background = { Color = gruvbox.background } },
 		{ Text = " " .. window:active_workspace() .. " " },
 	}
 
@@ -91,13 +64,11 @@ wezterm.on("update-right-status", function(window, pane)
 		if value == window:active_workspace() then
 			goto continue
 		end
-		table.insert(elements, { Foreground = { Color = catppuccin_mocha.blue } })
-		table.insert(elements, { Text = "" })
-		table.insert(elements, { Foreground = { Color = catppuccin_mocha.base } })
-		table.insert(elements, { Background = { Color = catppuccin_mocha.blue } })
-		table.insert(elements, { Text = " " })
-		table.insert(elements, { Foreground = { Color = catppuccin_mocha.text } })
-		table.insert(elements, { Background = { Color = catppuccin_mocha.base } })
+		table.insert(elements, { Foreground = { Color = gruvbox.background } })
+		table.insert(elements, { Background = { Color = gruvbox.brights[1] } })
+		table.insert(elements, { Text = "  " })
+		table.insert(elements, { Foreground = { Color = gruvbox.foreground } })
+		table.insert(elements, { Background = { Color = gruvbox.background } })
 		table.insert(elements, { Text = " " .. value .. " " })
 		::continue::
 	end
@@ -110,23 +81,18 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		title = tab.tab_title
 	end
 	title = wezterm.truncate_right(title, max_width - 5)
-	local active_color = catppuccin_mocha.blue
+	local active_color = gruvbox.brights[1]
 	if tab.is_active then
-		active_color = catppuccin_mocha.peach
+		active_color = gruvbox.ansi[7]
 	end
 	return {
-		{ Background = { Color = custom.tab_bar.background } },
-		{ Foreground = { Color = active_color } },
-		{ Text = "" },
 		{ Background = { Color = active_color } },
-		{ Foreground = { Color = catppuccin_mocha.base } },
-		{ Text = (tab.tab_index + 1) .. " " },
-		{ Background = { Color = catppuccin_mocha.base } },
-		{ Foreground = { Color = catppuccin_mocha.text } },
-		{ Text = " " .. title },
-		{ Background = { Color = custom.tab_bar.background } },
-		{ Foreground = { Color = catppuccin_mocha.base } },
-		{ Text = "" },
+		{ Foreground = { Color = gruvbox.background } },
+		{ Text = " " .. (tab.tab_index + 1) .. " " },
+		{ Background = { Color = gruvbox.background } },
+		{ Foreground = { Color = gruvbox.foreground } },
+		{ Text = " " .. title .. " " },
+		{ Foreground = { Color = gruvbox.background } },
 	}
 end)
 -- keymaps
@@ -173,7 +139,6 @@ local function split_nav(resize_or_move, key)
 		end),
 	}
 end
-
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	split_nav("move", "h"),

@@ -1,6 +1,7 @@
 fish_add_path -P --prepend "$HOME"/.local/bin
 if status is-interactive
 
+set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
     function yy
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
         yazi $argv --cwd-file="$tmp"
@@ -47,6 +48,7 @@ if status is-interactive
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --preview='fzf-preview.sh {}'"
+    set SHELL "fish"
 
     setup_vi_mode
     setup_homebrew

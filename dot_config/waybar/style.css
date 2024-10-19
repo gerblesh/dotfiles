@@ -1,228 +1,177 @@
-@import url("./colors.css");
-
-/* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
-
-/* -----------------------------------------------------------------------------
- * Keyframes
- * -------------------------------------------------------------------------- */
-
-@keyframes blink-warning {
-    70% {
-        background-color: @primary;
-    }
-
-    to {
-        background-color: @warning;
-    }
-}
-
-@keyframes blink-critical {
-    10% {
-      background-color: @primary;
-    }
-
-    to {
-      background-color: @urgent;
-    }
-}
-
-
-/* -----------------------------------------------------------------------------
- * Base styles
- * -------------------------------------------------------------------------- */
-
-/* Reset all styles */
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    font-weight: 600;
-}
-
-/* The whole bar */
-#waybar {
-    color: @text;
-    font-family: Cantarell, Overpass Nerd Font;
     font-size: 20px;
-    border-bottom: 2px solid @shadow;
-    background-color: @main;
+    border-radius: 5px;
 }
 
-#window {
-    /*no styles*/
+window#waybar {
+    padding: 0px;
+    border-radius: 0px;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: JetBrainsNerdFont Mono;
+    background-color: #1d2021;
+    border-bottom: 0px;
+    color: #ebdbb2;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-/* Each module */
-#privacy-item,
-#pulseaudio-slider,
-#custom-power-profile,
-#workspaces button,
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+.modules-right {
+    margin: 10px 10px 0 0;
+}
+.modules-center {
+    margin: 10px 0 0 0;
+}
+.modules-left {
+    margin: 10px 0 0 10px;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    /* box-shadow: inset 0 -3px transparent; */
+    border: none;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ebdbb2;
+}
+
+#workspaces {
+    background-color: #282828;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ebdbb2;
+    border-radius: 0;
+}
+
+#workspaces button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+#workspaces button:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+#workspaces button:hover {
+    color: #d79921;
+}
+
+#workspaces button.focused {
+    background-color: #665c54;
+    /* box-shadow: inset 0 -3px #ffffff; */
+}
+
+#workspaces button.urgent {
+    background-color: #b16286;
+}
+
 #idle_inhibitor,
-#mpris,
-#backlight,
-#battery,
-#clock,
-#cpu,
-#custom-keyboard-layout,
-#memory,
+#cava,
+#scratchpad,
 #mode,
-#network,
-#pulseaudio,
-#temperature,
-#tray {
-    color: @main;
-    border-radius: 0px 0px 4px 4px;
-    background-color: @pimary;
-    margin: 0px 5px 5px 5px;
-    padding: 5px 5px;
-    border-bottom: 3px solid @underline;
+#window,
+#clock,
+#battery,
+#backlight,
+#wireplumber,
+#tray,
+#mpris,
+#load {
+    padding: 5px 10px;
+    background-color: #282828;
+    color: #ebdbb2;
 }
 
-tooltip {
-  background: @base;
-  border: 4px solid @crust;
-  border-radius: 4px;
+#mode {
+    background-color: #689d6a;
+    color: #282828;
+    /* box-shadow: inset 0 -3px #ffffff; */
 }
-/* -----------------------------------------------------------------------------
- * Module styles
- * -------------------------------------------------------------------------- */
 
-#battery {
-    animation-timing-function: linear;
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#cava {
+    padding: 0 5px;
+}
+
+#battery.charging, #battery.plugged {
+    background-color: #98971a;
+    color: #282828;
+}
+
+@keyframes blink {
+    to {
+        background-color: #282828;
+        color: #ebdbb2;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #cc241d;
+    color: #ebdbb2;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
-#battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 10s;
+label:focus {
+    background-color: #000000;
 }
 
-#battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
+#wireplumber.muted {
+    background-color: #458588;
 }
 
-#battery.charging {
-    background-color: @secondary;
+#tray > .passive {
+    -gtk-icon-effect: dim;
 }
 
-#custom-keyboard-layout,
-#battery {
-    background-color: @primary;
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
 }
 
-
-#privacy-item.audio-out {
-    background-color: @teal;
+#mpris.playing {
+    background-color: #d79921;
+    color: #282828;
 }
 
-#privacy-item.audio-in {
-    background-color: @warning;
+#tray menu {
+    font-family: sans-serif;
 }
 
-#privacy-item.screenshare {
-    background-color: @urgent;
-}
-
-#clock {
-    background-color: @sapphire;
-}
-
-#custom-power-profile.power-saver {
-    background-color: @urgent;
-}
-
-#custom-power-profile.balanced {
-    background-color: @primary;
-}
-
-#custom-power-profile.performance {
-    background-color: @warning;
-}
-
-#mpris {
-    background-color: @music;
-}
-
-#pulseaudio {
-    background-color: @tertiary;
-}
-
-#tray {
-    color: @tray;
-    border-color: @tray;
-}
-
-#idle_inhibitor.activated,
-#mode,
-#backlight {
-    background-color: @backlight;
-}
-
-#idle_inhibitor.deactivated,
-#pulseaudio.muted,
-#workspaces button {
-    border-color: @unfocused;
-    color: @unfocused;
-    background-color: @transparent;
-}
-
-#workspaces button.current_output {
-    border-color: @primary;
-}
-
-#workspaces button.visible{
-    background-color: @unfocused;
-    color: @main;
-}
-
-#workspaces button:hover,
-#workspaces button.focused {
-    transition: all 0.3s;
-}
-
-#workspaces button.focused {
-    padding-right: 14px;
-    padding-left: 14px;
-    background-color: @primary;
-    color: @main;
-}
-
-#workspaces button.urgent {
-    background-color: @urgent;
-    border-color: @urgent;
-}
-
-#pulseaudio-slider {
-    background-color: @tertiary;
-}
-
-#pulseaudio-slider slider {
-    min-height: 0px;
-    min-width: 0px;
-    opacity: 0;
-    background-image: none;
-    border: none;
-    box-shadow: none;
-}
-
-#pulseaudio-slider trough {
-    min-height: 10px;
-    min-width: 40px;
-    border-radius: 5px;
-    background-color: @unfocused;
-}
-#pulseaudio-slider highlight {
-    min-width: 10px;
-    border-radius: 5px;
-    background-color: @main;
+#scratchpad.empty {
+    background: transparent;
 }

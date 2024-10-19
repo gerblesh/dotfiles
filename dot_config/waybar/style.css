@@ -1,6 +1,6 @@
 * {
     font-size: 20px;
-    border-radius: 5px;
+    border-radius: 0px;
 }
 
 window#waybar {
@@ -66,13 +66,13 @@ button:hover {
     border-radius: 0;
 }
 
-#workspaces button:first-child {
-    border-radius: 5px 0 0 5px;
-}
-
-#workspaces button:last-child {
-    border-radius: 0 5px 5px 0;
-}
+/* #workspaces button:first-child { */
+/*     border-radius: 5px 0 0 5px; */
+/* } */
+/**/
+/* #workspaces button:last-child { */
+/*     border-radius: 0 5px 5px 0; */
+/* } */
 
 #workspaces button:hover {
     color: #d79921;

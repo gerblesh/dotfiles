@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CHOICE=$(printf "󰾆 Power Saver\n󰾅 Balanced\n󰓅 Performance" | fuzzel --dmenu --index --prompt " Select Power Profile:  ")
+CHOICE=$(printf "󰾆 Power Saver\n󰾅 Balanced\n󰓅 Performance" | rofi -dmenu -format 'i' -p " Select Power Profile:  ")
 
 case "$CHOICE" in
     0)

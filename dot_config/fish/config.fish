@@ -29,6 +29,10 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
         # Commands to run in interactive sessions can go here
         fish_vi_key_bindings
     end
+    function apply
+        chezmoi re-add
+        chezmoi apply -n
+    end
 
     # set fish_vi_force_cursor 1
 

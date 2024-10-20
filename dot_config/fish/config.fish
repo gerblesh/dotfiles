@@ -33,6 +33,9 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
         chezmoi re-add
         chezmoi apply
     end
+    function editbrew
+        nvim ~/.config/Brewfile
+    end
     function cgitcom # chezmoi git commit
         chezmoi re-add
         chezmoi git add .
@@ -80,12 +83,12 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
     #     alias nvim="hx"
     # end
 
-    if which podman >/dev/null
-        alias butane='podman run --rm --interactive       \
-                  --security-opt label=disable        \
-                  --volume {$PWD}:/pwd --workdir /pwd \
-                  quay.io/coreos/butane:release'
-    end
+    # if which podman >/dev/null 2>&1
+    #     alias butane='podman run --rm --interactive       \
+    #               --security-opt label=disable        \
+    #               --volume {$PWD}:/pwd --workdir /pwd \
+    #               quay.io/coreos/butane:release'
+    # end
 
     set EDITOR "/home/linuxbrew/.linuxbrew/bin/nvim"
 

@@ -30,8 +30,7 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
         fish_vi_key_bindings
     end
     function ba # brew apply
-        chezmoi re-add
-        chezmoi apply
+        brew bundle --cleanup --file .config/Brewfile
     end
     function editbrew
         nvim ~/.config/Brewfile
@@ -40,6 +39,9 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
         chezmoi re-add
         chezmoi git add .
         chezmoi git commit
+    end
+    function cgitpu # chezmoi git commit
+        chezmoi git push
     end
 
     # set fish_vi_force_cursor 1

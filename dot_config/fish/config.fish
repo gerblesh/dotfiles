@@ -89,6 +89,7 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
     #               --volume {$PWD}:/pwd --workdir /pwd \
     #               quay.io/coreos/butane:release'
     # end
+    # eval (ssh-agent -c) >/dev/null 2>&1
 
     set EDITOR "/home/linuxbrew/.linuxbrew/bin/nvim"
 

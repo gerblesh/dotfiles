@@ -1,17 +1,21 @@
 configuration{
-    modi: "run,drun,window";
+    modi: "run,drun,window,ssh";
     icon-theme: "hicolor";
     show-icons: true;
     terminal: "wezterm";
+    ssh-command: "{terminal} {ssh-client} {host} [-p {port}]";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
     display-drun: "   Apps ";
+    display-ssh: "   SSH ";
     display-run: "   Run ";
     display-window: " 󰕰  Window";
     display-Network: " 󰤨  Network";
     sidebar-mode: true;
+    case-sensitive: false;
+    matching: "normal";
 }
 
 @theme "gruvbox"

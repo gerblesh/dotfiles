@@ -30,7 +30,7 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
         fish_vi_key_bindings
     end
     function ba # brew apply
-        brew bundle --cleanup --file .config/Brewfile
+        brew bundle --cleanup --file ~/.config/Brewfile
     end
     function editbrew
         nvim ~/.config/Brewfile

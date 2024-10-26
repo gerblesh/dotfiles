@@ -4,18 +4,15 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
+sessionizer.apply_to_config(config, true)
+sessionizer.config.paths = wezterm.read_dir("/home/user/Documents/")
+sessionizer.config.command_options.fd_path = "/home/linuxbrew/.linuxbrew/bin/fd"
+
 config.default_prog = { "/bin/fish" }
 config.set_environment_variables = {
 	SHELL = "/bin/fish",
 }
--- config.term = "wezterm"
--- config.unix_domains = {
--- 	{
--- 		name = "unix",
--- 		local_echo_threshold_ms = 300,
--- 	},
--- }
--- config.default_gui_startup_args = { "connect", "unix" }
 
 -- appearance
 config.font = wezterm.font("JetBrainsMonoNerdFont")
@@ -206,55 +203,56 @@ config.keys = {
 	{ key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
 	-- Paste from Copy Mode
 	{ key = "]", mods = "LEADER", action = wezterm.action.PasteFrom("PrimarySelection") },
-	{
-		key = "h",
-		mods = "LEADER",
-		action = wezterm.action_callback(function(window, pane)
-			-- Here you can dynamically construct a longer list if needed
-			local home = wezterm.home_dir
-			local workspaces = {
-				{ id = home, label = "default" },
-				{ id = home, label = "Home" },
-				{ id = home .. "/Documents/Rust/", label = "Rust" },
-				{ id = home .. "/Documents/Go Projects/", label = "Golang" },
-				{ id = home .. "/Documents/C/", label = "C" },
-				{ id = home .. "/Documents/csharp/", label = "C Sharp" },
-				{ id = home .. "/Documents/Processing/", label = "Processing" },
-				{ id = home .. "/Documents/Godot/", label = "Godot" },
-				{ id = home .. "/Documents/Neorg/", label = "Neorg" },
-				{ id = home .. "/.config/", label = "Config" },
-				{ id = home .. "/Documents/Ublue/", label = "Universal Blue" },
-			}
-
-			window:perform_action(
-				wezterm.action.InputSelector({
-					action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
-						if not id and not label then
-							wezterm.log_info("cancelled")
-						else
-							wezterm.log_info("id = " .. id)
-							wezterm.log_info("label = " .. label)
-							inner_window:perform_action(
-								wezterm.action.SwitchToWorkspace({
-									name = label,
-									spawn = {
-										label = "Workspace: " .. label,
-										cwd = id,
-									},
-								}),
-								inner_pane
-							)
-						end
-					end),
-					title = "Choose Workspace",
-					choices = workspaces,
-					fuzzy = true,
-					fuzzy_description = "Fuzzy find and/or make a workspace 󱝩 ",
-				}),
-				pane
-			)
-		end),
-	},
+	{ key = "s", mods = "CTRL", action = sessionizer.show },
+	-- {
+	-- 	key = "h",
+	-- 	mods = "LEADER",
+	-- 	action = wezterm.action_callback(function(window, pane)
+	-- 		-- Here you can dynamically construct a longer list if needed
+	-- 		local home = wezterm.home_dir
+	-- 		local workspaces = {
+	-- 			{ id = home, label = "default" },
+	-- 			{ id = home, label = "Home" },
+	-- 			{ id = home .. "/Documents/Rust/", label = "Rust" },
+	-- 			{ id = home .. "/Documents/Go Projects/", label = "Golang" },
+	-- 			{ id = home .. "/Documents/C/", label = "C" },
+	-- 			{ id = home .. "/Documents/csharp/", label = "C Sharp" },
+	-- 			{ id = home .. "/Documents/Processing/", label = "Processing" },
+	-- 			{ id = home .. "/Documents/Godot/", label = "Godot" },
+	-- 			{ id = home .. "/Documents/Neorg/", label = "Neorg" },
+	-- 			{ id = home .. "/.config/", label = "Config" },
+	-- 			{ id = home .. "/Documents/Ublue/", label = "Universal Blue" },
+	-- 		}
+	--
+	-- 		window:perform_action(
+	-- 			wezterm.action.InputSelector({
+	-- 				action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
+	-- 					if not id and not label then
+	-- 						wezterm.log_info("cancelled")
+	-- 					else
+	-- 						wezterm.log_info("id = " .. id)
+	-- 						wezterm.log_info("label = " .. label)
+	-- 						inner_window:perform_action(
+	-- 							wezterm.action.SwitchToWorkspace({
+	-- 								name = label,
+	-- 								spawn = {
+	-- 									label = "Workspace: " .. label,
+	-- 									cwd = id,
+	-- 								},
+	-- 							}),
+	-- 							inner_pane
+	-- 						)
+	-- 					end
+	-- 				end),
+	-- 				title = "Choose Workspace",
+	-- 				choices = workspaces,
+	-- 				fuzzy = true,
+	-- 				fuzzy_description = "Fuzzy find and/or make a workspace 󱝩 ",
+	-- 			}),
+	-- 			pane
+	-- 		)
+	-- 	end),
+	-- },
 }
 
 return config

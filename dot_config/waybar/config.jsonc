@@ -91,8 +91,8 @@
         "tooltip-format": "{app}: {title}"
     },
     "tray": {
-        "icon-size": 14,
-        "spacing": 10
+        "icon-size": 30,
+        "spacing": 15
     },
     "load": {
         "format": " {}"

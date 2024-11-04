@@ -11,7 +11,12 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
         rm -f -- "$tmp"
     end
 
-
+    # function fzf_change_zoxide ()
+    #     set dir (zoxide query --list | fzf)
+    #     if [ "$dir"  != "" ];
+    #         cd "$dir"
+    #     end
+    # end
     function setup_vi_mode
         # set -Ux fish_cursor_default block
         # Set the insert mode cursor to a line
@@ -47,8 +52,8 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
     # set fish_vi_force_cursor 1
 
     function setup_homebrew
-        fish_add_path -P --append /home/linuxbrew/.linuxbrew/bin
-        fish_add_path -P --append /home/linuxbrew/.linuxbrew/sbin
+        fish_add_path -P --prepend /home/linuxbrew/.linuxbrew/bin
+        fish_add_path -P --prepend /home/linuxbrew/.linuxbrew/sbin
         set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
         set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
         set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
@@ -56,14 +61,15 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
 
     fish_add_path -P --prepend "$HOME"/.local/bin
     fish_add_path -P --append "$HOME"/.cargo/bin
-    set -Ux FZF_DEFAULT_OPTS "--color=fg:#ebdbb2,bg:#282828,hl:#b16286 --color=fg+:#689d6a,bg+:#32302f,hl+:#d3869b --color=info:#d65d0e,prompt:#458588,pointer:#fe8019 --color=marker:#8ec07c,spinner:#cc241d,header:#fabd2f --preview='fzf-preview.sh {}'"
+    set -Ux FZF_DEFAULT_OPTS "--color=fg:#ebdbb2,hl:#b16286 --color=fg+:#689d6a,bg+:#32302f,hl+:#d3869b --color=info:#d65d0e,prompt:#458588,pointer:#fe8019 --color=marker:#8ec07c,spinner:#cc241d,header:#fabd2f --preview='fzf-preview.sh {}'"
 
+    # set -Ux FZF_DEFAULT_OPTS "--color=fg:#ebdbb2,bg:#28282800,hl:#b16286 --color=fg+:#689d6a,bg+:#32302f,hl+:#d3869b --color=info:#d65d0e,prompt:#458588,pointer:#fe8019 --color=marker:#8ec07c,spinner:#cc241d,header:#fabd2f --preview='fzf-preview.sh {}'"
 #     set -Ux FZF_DEFAULT_OPTS "\
 # --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
 # --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 # --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 # --preview='fzf-preview.sh {}'"
-    set SHELL "fish"
+    set SHELL "/bin/fish"
 
     setup_vi_mode
     setup_homebrew
@@ -80,6 +86,9 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
     if which eza >/dev/null 2>&1
         alias ls="eza --icons --sort type"
     end
+    if which bat >/dev/null 2>&1
+        alias cat="bat"
+    end
 
     # if which hx >/dev/null 2>&1
     #     alias nvim="hx"
@@ -93,14 +102,15 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
     # end
     # eval (ssh-agent -c) >/dev/null 2>&1
 
-    set EDITOR "/home/linuxbrew/.linuxbrew/bin/nvim"
 
     if which nvim >/dev/null 2>&1
         alias nano="nvim"
+        set EDITOR (which nvim)
     end
 
     if which zoxide >/dev/null 2>&1
         eval (zoxide init --cmd cd fish | source) >/dev/null 2>&1
+        bind --mode insert \cq '__zoxide_zi'
     end
     if test -d (brew --prefix)"/share/fish/completions"
         set -p fish_complete_path (brew --prefix)/share/fish/completions

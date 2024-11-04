@@ -36,6 +36,9 @@ config.colors = {
 		background = "#1d2021",
 	},
 }
+local gpus = wezterm.gui.enumerate_gpus()
+config.webgpu_preferred_adapter = gpus[0]
+config.front_end = "WebGpu"
 
 config.inactive_pane_hsb = {
 	saturation = 0.9,

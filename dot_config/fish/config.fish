@@ -40,13 +40,16 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
     function editbrew
         nvim ~/.config/Brewfile
     end
-    function cgitcom # chezmoi git commit
+    function cgitcm # chezmoi git commit
         chezmoi re-add
         chezmoi git add .
         chezmoi git commit
     end
-    function cgitpu # chezmoi git commit
+    function cgitps # chezmoi git push
         chezmoi git push
+    end
+    function cgitpl # chezmoi git pull
+        chezmoi git pull
     end
 
     # set fish_vi_force_cursor 1
@@ -105,12 +108,14 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
 
     if which nvim >/dev/null 2>&1
         alias nano="nvim"
+        alias v="nvim"
         set EDITOR (which nvim)
+        bind --mode insert \ce "$EDITOR (fzf)"
     end
 
     if which zoxide >/dev/null 2>&1
         eval (zoxide init --cmd cd fish | source) >/dev/null 2>&1
-        bind --mode insert \cq '__zoxide_zi'
+        bind --mode insert \cw '__zoxide_zi'
     end
     if test -d (brew --prefix)"/share/fish/completions"
         set -p fish_complete_path (brew --prefix)/share/fish/completions

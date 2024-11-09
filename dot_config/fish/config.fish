@@ -117,6 +117,7 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
         eval (zoxide init --cmd cd fish | source) >/dev/null 2>&1
         bind --mode insert \cw '__zoxide_zi'
     end
+
     if test -d (brew --prefix)"/share/fish/completions"
         set -p fish_complete_path (brew --prefix)/share/fish/completions
     end

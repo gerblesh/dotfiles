@@ -17,6 +17,10 @@ brew "lazygit"
 brew "fastfetch"
 brew "scrcpy"
 brew "chafa"
+brew "imagemagick"
+brew "helix"
+brew "nushell"
+brew "gdu"
 
 # Programming languages
 brew "go"

@@ -21,11 +21,10 @@ brew "imagemagick"
 brew "helix"
 brew "nushell"
 brew "gdu"
+brew "meson"
 
 # Programming languages
 brew "go"
-brew "python"
-brew "pipx"
 brew "java"
 
 # Dev tools

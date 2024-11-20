@@ -136,39 +136,39 @@ require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
-	{
-		"3rd/image.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			{
-				"nvim-treesitter/nvim-treesitter",
-			},
-		},
-		opts = {
-			backend = "kitty",
-			integrations = {
-				markdown = {
-					enabled = true,
-					clear_in_insert_mode = false,
-					download_remote_images = true,
-					only_render_image_at_cursor = false,
-					filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
-				},
-				neorg = {
-					enabled = true,
-					clear_in_insert_mode = false,
-					download_remote_images = true,
-					only_render_image_at_cursor = false,
-					filetypes = { "norg" },
-				},
-			},
-			max_width = nil,
-			max_height = nil,
-			max_width_window_percentage = nil,
-			max_height_window_percentage = 50,
-			kitty_method = "normal",
-		},
-	},
+	-- {
+	-- 	"3rd/image.nvim",
+	-- 	event = "VeryLazy",
+	-- 	dependencies = {
+	-- 		{
+	-- 			"nvim-treesitter/nvim-treesitter",
+	-- 		},
+	-- 	},
+	-- 	opts = {
+	-- 		backend = "kitty",
+	-- 		integrations = {
+	-- 			markdown = {
+	-- 				enabled = true,
+	-- 				clear_in_insert_mode = false,
+	-- 				download_remote_images = true,
+	-- 				only_render_image_at_cursor = false,
+	-- 				filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+	-- 			},
+	-- 			neorg = {
+	-- 				enabled = true,
+	-- 				clear_in_insert_mode = false,
+	-- 				download_remote_images = true,
+	-- 				only_render_image_at_cursor = false,
+	-- 				filetypes = { "norg" },
+	-- 			},
+	-- 		},
+	-- 		max_width = nil,
+	-- 		max_height = nil,
+	-- 		max_width_window_percentage = nil,
+	-- 		max_height_window_percentage = 50,
+	-- 		kitty_method = "normal",
+	-- 	},
+	-- },
 	-- NOTE: Plugins can also be added by using a table,
 	-- with the first argument being the link and the following
 	-- keys can be used to configure plugin behavior/loading/etc.

@@ -1,10 +1,13 @@
-theme = "gruvbox"
+theme = "gruvbox_transparent"
 
 [editor]
 line-number = "relative"
-mouse = false
+mouse = true
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
+
+[keys.insert]
+'j'	= {'k'='normal_mode','j'=[':insert-output /bin/echo -n j','move_char_right','insert_mode']}

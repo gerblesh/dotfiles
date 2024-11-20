@@ -1,7 +1,8 @@
-fish_add_path -P --prepend "$HOME"/.local/bin
 if status is-interactive
-
-set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
+set PATH "/usr/bin:/usr/sbin:/usr/local/bin"
+set -x MANPAGER "nvim +Man!"
+fish_add_path -P --prepend "$HOME"/.local/bin
+set -Ux XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/linuxbrew/.linuxbrew/share"
     function yy
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
         yazi $argv --cwd-file="$tmp"
@@ -55,13 +56,14 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
     # set fish_vi_force_cursor 1
 
     function setup_homebrew
-        fish_add_path -P --prepend /home/linuxbrew/.linuxbrew/bin
-        fish_add_path -P --prepend /home/linuxbrew/.linuxbrew/sbin
+        fish_add_path -P --append /home/linuxbrew/.linuxbrew/bin
+        fish_add_path -P --append /home/linuxbrew/.linuxbrew/sbin
         set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
         set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
         set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
     end
 
+    fish_add_path -P --prepend "/usr/local/bin"
     fish_add_path -P --prepend "$HOME"/.local/bin
     fish_add_path -P --append "$HOME"/.cargo/bin
     set -Ux FZF_DEFAULT_OPTS "--color=fg:#ebdbb2,hl:#b16286 --color=fg+:#689d6a,bg+:#32302f,hl+:#d3869b --color=info:#d65d0e,prompt:#458588,pointer:#fe8019 --color=marker:#8ec07c,spinner:#cc241d,header:#fabd2f --preview='fzf-preview.sh {}'"
@@ -76,7 +78,6 @@ set -Ux XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
 
     setup_vi_mode
     setup_homebrew
-    # Configure path for localbin
 
     function fish_greeting
         # blank fish greeting

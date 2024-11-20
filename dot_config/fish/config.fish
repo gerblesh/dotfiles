@@ -1,8 +1,8 @@
 if status is-interactive
-set PATH "/usr/bin:/usr/sbin:/usr/local/bin"
-set -x MANPAGER "nvim +Man!"
-fish_add_path -P --prepend "$HOME"/.local/bin
-set -Ux XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/linuxbrew/.linuxbrew/share"
+    set PATH "/usr/bin:/usr/sbin:/usr/local/bin"
+    set -x MANPAGER "hx +Man!"
+    fish_add_path -P --prepend "$HOME"/.local/bin
+    set -Ux XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/linuxbrew/.linuxbrew/share"
     function yy
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
         yazi $argv --cwd-file="$tmp"
@@ -63,18 +63,18 @@ set -Ux XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/linuxbrew/.linuxbrew/share"
         set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
     end
 
-    fish_add_path -P --prepend "/usr/local/bin"
+    fish_add_path -P --prepend /usr/local/bin
     fish_add_path -P --prepend "$HOME"/.local/bin
     fish_add_path -P --append "$HOME"/.cargo/bin
     set -Ux FZF_DEFAULT_OPTS "--color=fg:#ebdbb2,hl:#b16286 --color=fg+:#689d6a,bg+:#32302f,hl+:#d3869b --color=info:#d65d0e,prompt:#458588,pointer:#fe8019 --color=marker:#8ec07c,spinner:#cc241d,header:#fabd2f --preview='fzf-preview.sh {}'"
 
     # set -Ux FZF_DEFAULT_OPTS "--color=fg:#ebdbb2,bg:#28282800,hl:#b16286 --color=fg+:#689d6a,bg+:#32302f,hl+:#d3869b --color=info:#d65d0e,prompt:#458588,pointer:#fe8019 --color=marker:#8ec07c,spinner:#cc241d,header:#fabd2f --preview='fzf-preview.sh {}'"
-#     set -Ux FZF_DEFAULT_OPTS "\
-# --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
-# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-# --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-# --preview='fzf-preview.sh {}'"
-    set SHELL "/bin/fish"
+    #     set -Ux FZF_DEFAULT_OPTS "\
+    # --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
+    # --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+    # --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+    # --preview='fzf-preview.sh {}'"
+    set SHELL /bin/fish
 
     setup_vi_mode
     setup_homebrew
@@ -107,16 +107,20 @@ set -Ux XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/linuxbrew/.linuxbrew/share"
     # eval (ssh-agent -c) >/dev/null 2>&1
 
 
-    if which nvim >/dev/null 2>&1
-        alias nano="nvim"
-        alias v="nvim"
-        set EDITOR (which nvim)
+    # if which nvim >/dev/null 2>&1
+    #     alias v="nvim"
+    #     set EDITOR (which nvim)
+    #     bind --mode insert \ce "$EDITOR (fzf)"
+    # end
+
+    if which hx >/dev/null 2>&1
+        set EDITOR (which hx)
         bind --mode insert \ce "$EDITOR (fzf)"
     end
 
     if which zoxide >/dev/null 2>&1
         eval (zoxide init --cmd cd fish | source) >/dev/null 2>&1
-        bind --mode insert \cw '__zoxide_zi'
+        bind --mode insert \cw __zoxide_zi
     end
 
     if test -d (brew --prefix)"/share/fish/completions"

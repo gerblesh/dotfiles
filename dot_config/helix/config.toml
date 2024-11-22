@@ -9,5 +9,18 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
+[editor.whitespace]
+render = "all"
+
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
+
 [keys.insert]
 'j'	= {'k'='normal_mode','j'=[':insert-output /bin/echo -n j','move_char_right','insert_mode']}

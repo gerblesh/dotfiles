@@ -1,6 +1,7 @@
 if status is-interactive
     set PATH "/usr/bin:/usr/sbin:/usr/local/bin"
-    set -x MANPAGER "hx +Man!"
+    set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+    set -x MANROFFOPT -c
     fish_add_path -P --prepend "$HOME"/.local/bin
     set -Ux XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/linuxbrew/.linuxbrew/share"
     function yy
@@ -39,7 +40,7 @@ if status is-interactive
         brew bundle --cleanup --file ~/.config/Brewfile
     end
     function editbrew
-        nvim ~/.config/Brewfile
+        $EDITOR ~/.config/Brewfile
     end
     function cgitcm # chezmoi git commit
         chezmoi re-add
@@ -115,6 +116,7 @@ if status is-interactive
 
     if which hx >/dev/null 2>&1
         set EDITOR (which hx)
+        alias nvim hx
         bind --mode insert \ce "$EDITOR (fzf)"
     end
 

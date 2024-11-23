@@ -23,6 +23,9 @@ brew "nushell"
 brew "gdu"
 brew "meson"
 brew "netcat"
+brew "vitetris"
+brew "erofs-utils"
+brew "pipx"
 
 # Programming languages
 brew "go"

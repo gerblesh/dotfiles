@@ -24,12 +24,16 @@ brew "gdu"
 brew "meson"
 brew "netcat"
 brew "vitetris"
+brew "pandoc"
 brew "erofs-utils"
 brew "pipx"
-
+brew "pyright"
+brew "tinymist"
 # Programming languages
 brew "go"
 brew "java"
+brew "rustup"
+brew "typst"
 
 # Dev tools
 brew "hugo"

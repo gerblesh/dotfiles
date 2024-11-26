@@ -29,11 +29,13 @@ brew "erofs-utils"
 brew "pipx"
 brew "pyright"
 brew "tinymist"
+brew "podlet"
 # Programming languages
 brew "go"
 brew "java"
 brew "rustup"
 brew "typst"
+brew "uv"
 
 # Dev tools
 brew "hugo"

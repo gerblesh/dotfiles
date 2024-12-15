@@ -17,6 +17,9 @@ render = true
 character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
 
+[editor.lsp]
+display-inlay-hints = true
+
 [editor.soft-wrap]
 enable = true
 max-wrap = 25 # increase value to reduce forced mid-word wrapping
@@ -27,3 +30,4 @@ max-indent-retain = 0
 
 [keys.normal]
 'z' = {'y'=':yank-diagnostic'}
+' ' = {'l'=':o .github'}

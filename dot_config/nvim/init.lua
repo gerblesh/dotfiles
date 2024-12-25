@@ -4,6 +4,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.filetype.add({
+	extension = {
+		hx = "haxe",
+	},
+})
+
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
@@ -881,6 +887,7 @@ require("lazy").setup({
 				"cpp",
 				"gdscript",
 				"dockerfile",
+				"haxe",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
@@ -896,6 +903,16 @@ require("lazy").setup({
 		config = function(_, opts)
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			parser_config.haxe = {
+				install_info = {
+					url = "https://github.com/gerblesh/tree-sitter-haxe",
+					files = { "src/parser.c", "src/scanner.c" },
+					-- optional entries:
+					branch = "try-catch-while-for-enum",
+				},
+				filetype = "haxe",
+			}
 			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup(opts)
 

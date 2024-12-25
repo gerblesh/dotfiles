@@ -87,6 +87,9 @@ if status is-interactive
     if which flatpak >/dev/null 2>&1
         alias mpv="flatpak run io.mpv.Mpv"
     end
+    if which haxelib >/dev/null 2>&1
+        alias flixel="haxelib run flixel-tools"
+    end
 
     if which eza >/dev/null 2>&1
         alias ls="eza --icons --sort type"
@@ -116,7 +119,6 @@ if status is-interactive
 
     if which hx >/dev/null 2>&1
         set EDITOR (which hx)
-        alias nvim hx
         bind --mode insert \ce "$EDITOR (fzf)"
     end
 

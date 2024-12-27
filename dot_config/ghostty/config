@@ -5,6 +5,7 @@ theme = GruvboxDark
 font-size = 16
 background-opacity = 0.94
 cursor-style = block
+shell-integration = fish
 
 gtk-titlebar = true
 gtk-single-instance = false
@@ -13,6 +14,7 @@ gtk-adwaita = true
 keybind = alt+s=new_split:down
 keybind = alt+v=new_split:right
 keybind = alt+q=close_window
+keybind = alt+t=new_tab
 
 keybind = alt+h=goto_split:left
 keybind = alt+j=goto_split:bottom

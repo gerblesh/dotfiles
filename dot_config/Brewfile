@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "caarlos0/tap"
+tap "danielgatis/imgcat"
+
 # Modern Unix
 brew "fzf"
 brew "caarlos0/tap/timer"
@@ -41,6 +43,7 @@ brew "java"
 brew "rustup"
 brew "typst"
 brew "uv"
+brew "imgcat"
 
 # Dev tools
 brew "zig"

@@ -39,7 +39,7 @@ if status is-interactive
     function ba # brew apply
         brew bundle --cleanup --file ~/.config/Brewfile
     end
-    function editbrew
+    function eb # edit brew
         $EDITOR ~/.config/Brewfile
     end
     function cgitcm # chezmoi git commit

@@ -2,6 +2,7 @@ if status is-interactive
     set PATH "/usr/bin:/usr/sbin:/usr/local/bin"
     set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
     set -x MANROFFOPT -c
+    set HOME /var/home/user
     fish_add_path -P --prepend "$HOME"/.local/bin
     set -Ux XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/linuxbrew/.linuxbrew/share"
     function yy
@@ -20,7 +21,7 @@ if status is-interactive
     #     end
     # end
     function setup_vi_mode
-        # set -Ux fish_cursor_default block
+        set -Ux fish_cursor_default block
         # Set the insert mode cursor to a line
         # set -Ux fish_cursor_insert line
         # Set the replace mode cursors to an underscore
@@ -34,7 +35,7 @@ if status is-interactive
         # set -Ux fish_cursor_visual block
 
         # Commands to run in interactive sessions can go here
-        fish_vi_key_bindings
+        # fish_vi_key_bindings
     end
     function ba # brew apply
         brew bundle --cleanup --file ~/.config/Brewfile

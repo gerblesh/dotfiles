@@ -1,30 +1,49 @@
 command = /bin/fish
-click-repeat-interval = 500
 auto-update-channel = tip
 theme = GruvboxDark
 font-size = 16
+
+# For whatever reason the gtk titlebar being hidden with opacity leads the tab bar to be broken: https://github.com/ghostty-org/ghostty/issues/3009
 background-opacity = 0.94
+# cursor-opacity = 0.94
+
 cursor-style = block
+cursor-style-blink = false
 shell-integration = fish
+shell-integration-features = no-cursor
+cursor-style = underline
+cursor-style-blink = false
 
+# GTK shiz
+window-decoration = false
 gtk-titlebar = true
-gtk-single-instance = false
+gtk-single-instance = true
 gtk-adwaita = true
+adw-toolbar-style = flat
+gtk-tabs-location = bottom
 
-keybind = alt+s=new_split:down
+# Split/window management
+keybind = alt+w=new_split:down
 keybind = alt+v=new_split:right
 keybind = alt+q=close_window
 keybind = alt+t=new_tab
+keybind = shift+alt+n=new_window
+keybind = ctrl+alt+n=new_window
 
+# Split navigation
 keybind = alt+h=goto_split:left
 keybind = alt+j=goto_split:bottom
 keybind = alt+k=goto_split:top
 keybind = alt+l=goto_split:right
 
-keybind = alt+shift+h=resize_split:left,10
-keybind = alt+shift+j=resize_split:down,10
-keybind = alt+shift+k=resize_split:up,10
-keybind = alt+shift+l=resize_split:right,10
-
+# Resize Splits
+keybind = shift+alt+h=resize_split:left,10
+keybind = shift+alt+j=resize_split:down,10
+keybind = shift+alt+k=resize_split:up,10
+keybind = shift+alt+space=resize_split:right,10
 keybind = alt+z=toggle_split_zoom
 
+window-theme = ghostty
+
+# FIXME: temp (until more programs support ghostty terminfo)!
+term = kitty

@@ -1,3 +1,48 @@
+set INITIAL 0
+set LOADING 1
+set REPAINTING 2
+set state "$INITIAL"
+
+## async functions
+
+# Hash function to hash the CWD and cache git results on disk
+function hash_pwd
+    set hash (pwd | sha1sum | head -c 40)
+
+    echo "$hash"
+end
+
+function make_async_request
+    if test "$state" -eq "$INITIAL"
+        set state "$LOADING"
+        "$HOME/.config/fish/conf.d/update_git_status.fish" %self >>/tmp/debug 2>&1 &
+    end
+end
+
+function __async_prompt_repaint_prompt --on-signal SIGUSR1
+    set state "$REPAINTING"
+    commandline -f repaint >/dev/null 2>/dev/null
+end
+
+function async_set_buffer
+    eval "set -U async_prompt_buffer_$(hash_pwd) \"$argv[1]\""
+end
+
+function async_print_buffer
+    eval "echo -n \$async_prompt_buffer_$(hash_pwd)"
+end
+
+## end async
+
+function async_clean_old_vars
+    for var in (set --names)
+        echo "$var" | grep -q async_prompt
+        if test "$status" -eq 0
+            set --erase "$var" &
+        end
+    end
+end
+
 function fish_mode_prompt
     # set --local vi_mode_color
     set --local vi_mode_symbol
@@ -28,8 +73,7 @@ function fish_prompt
     # Silverblue workaround
     set -l pwd (string replace /var/home /home $PWD)
 
-
-    echo -ns (set_color -o cyan)(prompt_pwd -D 1 -d 2 $pwd) (set_color normal) "$stat "
+    echo -ns (set_color -o cyan)(prompt_pwd -D 1 $pwd) (set_color normal) "$stat "
 end
 
 set -g __fish_git_prompt_showupstream informative
@@ -39,12 +83,20 @@ set -g __fish_git_prompt_showuntrackedfiles true
 set -g __fish_git_prompt_showcolorhints false
 set -g __fish_git_prompt_char_upstream_behind " ↓"
 set -g __fish_git_prompt_char_upstream_ahead " ↑"
-set -g __fish_git_prompt_char_stagedstate " ●"
+set -g __fish_git_prompt_char_stagedstate "●"
 set -g __fish_git_prompt_char_untrackedfiles "!"
 
 function fish_right_prompt
+    make_async_request
+
     if test -e /run/.containerenv
         echo -ns (set_color -od brblack) " "(string match -rg 'name="(.*)"'</run/.containerenv)(set_color normal)
     end
-    echo -n (set_color -i magenta) (fish_vcs_prompt) (set_color normal)
+
+    async_print_buffer
+
+    if test "$state" -eq "$REPAINTING"
+        set state "$INITIAL"
+    end
+    # echo -ns (set_color -o magenta)(fish_vcs_prompt)(set_color normal)
 end

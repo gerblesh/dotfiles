@@ -40,6 +40,7 @@ keybind = shift+alt+j=resize_split:down,10
 keybind = shift+alt+k=resize_split:up,10
 keybind = shift+alt+l=resize_split:right,10
 keybind = alt+z=toggle_split_zoom
+theme = GruvboxDark
 
 window-theme = ghostty
 

@@ -18,7 +18,8 @@ character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
 
 [editor.lsp]
-display-inlay-hints = true
+# BADABADBADADADADk
+display-inlay-hints = false
 
 [editor.soft-wrap]
 enable = true
@@ -30,4 +31,4 @@ max-indent-retain = 0
 
 [keys.normal]
 'z' = {'y'=':yank-diagnostic'}
-' ' = {'l'=':o .github'}
+' ' = {'l'=':o .github', 'W'=':wa', 'q'=':wqa', 'Q'=':q!'}

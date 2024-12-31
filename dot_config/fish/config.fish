@@ -2,7 +2,7 @@ if status is-interactive
     set PATH "/usr/bin:/usr/sbin:/usr/local/bin"
     set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
     set -x MANROFFOPT -c
-    set HOME /var/home/user
+    # set HOME /var/home/user
     fish_add_path -P --prepend "$HOME"/.local/bin
     set -Ux XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/linuxbrew/.linuxbrew/share"
     function yy
@@ -63,6 +63,17 @@ if status is-interactive
         set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
         set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
         set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
+        if not which brew >/dev/null 2>&1
+            return
+        end
+
+        if test -d (brew --prefix)"/share/fish/completions"
+            set -p fish_complete_path (brew --prefix)/share/fish/completions
+        end
+
+        if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+            set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+        end
     end
 
     fish_add_path -P --prepend /usr/local/bin
@@ -99,25 +110,6 @@ if status is-interactive
         alias cat="bat"
     end
 
-    # if which hx >/dev/null 2>&1
-    #     alias nvim="hx"
-    # end
-
-    # if which podman >/dev/null 2>&1
-    #     alias butane='podman run --rm --interactive       \
-    #               --security-opt label=disable        \
-    #               --volume {$PWD}:/pwd --workdir /pwd \
-    #               quay.io/coreos/butane:release'
-    # end
-    # eval (ssh-agent -c) >/dev/null 2>&1
-
-
-    # if which nvim >/dev/null 2>&1
-    #     alias v="nvim"
-    #     set EDITOR (which nvim)
-    #     bind --mode insert \ce "$EDITOR (fzf)"
-    # end
-
     if which hx >/dev/null 2>&1
         set EDITOR (which hx)
         bind --mode insert \ce "$EDITOR (fzf)"
@@ -128,12 +120,5 @@ if status is-interactive
         bind --mode insert \cw __zoxide_zi
     end
 
-    if test -d (brew --prefix)"/share/fish/completions"
-        set -p fish_complete_path (brew --prefix)/share/fish/completions
-    end
-
-    if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-        set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-    end
 
 end

@@ -32,8 +32,6 @@ function async_print_buffer
     eval "echo -n \$async_prompt_buffer_$(hash_pwd)"
 end
 
-## end async
-
 function async_clean_old_vars
     for var in (set --names)
         echo "$var" | grep -q async_prompt
@@ -42,6 +40,8 @@ function async_clean_old_vars
         end
     end
 end
+
+## end async
 
 function fish_mode_prompt
     # set --local vi_mode_color
@@ -87,7 +87,14 @@ set -g __fish_git_prompt_char_stagedstate "●"
 set -g __fish_git_prompt_char_untrackedfiles "!"
 
 function fish_right_prompt
+    set -l duration $CMD_DURATION
     make_async_request
+
+    # greater than 10 seconds
+    # duration, not the most useful info tbh
+    # if test $duration -gt 10000
+    #     echo -ns (set_color -od brblack) "$duration" "ms "(set_color normal)
+    # end
 
     if test -e /run/.containerenv
         echo -ns (set_color -od brblack) " "(string match -rg 'name="(.*)"'</run/.containerenv)(set_color normal)
@@ -95,8 +102,8 @@ function fish_right_prompt
 
     async_print_buffer
 
+    # Reset state, prompt is complete
     if test "$state" -eq "$REPAINTING"
         set state "$INITIAL"
     end
-    # echo -ns (set_color -o magenta)(fish_vcs_prompt)(set_color normal)
 end

@@ -1,10 +1,10 @@
 command = /bin/fish
 auto-update-channel = tip
 theme = GruvboxDark
-font-size = 16
+font-size = 13
 
 background-opacity = 0.9
-# cursor-opacity = 0.94
+
 
 cursor-style-blink = false
 shell-integration = fish
@@ -12,26 +12,26 @@ shell-integration-features = no-cursor
 cursor-style = underline
 cursor-style-blink = false
 
-# GTK shiz
+
+gtk-custom-css = ?style.css
 window-decoration = false
 gtk-titlebar = true
 gtk-single-instance = true
 gtk-adwaita = true
-adw-toolbar-style = flat
+gtk-wide-tabs = false
+# adw-toolbar-style = flat
 gtk-tabs-location = bottom
 
 # Split/window management
-keybind = alt+w=new_split:down
-keybind = alt+v=new_split:right
+# keybind = alt+w=new_split:down
+keybind = alt+w=new_split:auto
 keybind = alt+q=close_window
 keybind = alt+t=new_tab
-keybind = shift+alt+n=new_window
-keybind = ctrl+alt+n=new_window
 
 # Split navigation
 keybind = alt+h=goto_split:left
-keybind = alt+j=goto_split:bottom
-keybind = alt+k=goto_split:top
+keybind = alt+j=goto_split:down
+keybind = alt+k=goto_split:up
 keybind = alt+l=goto_split:right
 
 # Resize Splits
@@ -40,10 +40,8 @@ keybind = shift+alt+j=resize_split:down,10
 keybind = shift+alt+k=resize_split:up,10
 keybind = shift+alt+l=resize_split:right,10
 keybind = alt+z=toggle_split_zoom
-theme = GruvboxDark
 
 window-theme = ghostty
-
 
 font-family = SF Mono
 

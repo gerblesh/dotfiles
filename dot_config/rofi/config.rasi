@@ -2,8 +2,8 @@ configuration{
     modi: "run,drun,window,ssh";
     icon-theme: "hicolor";
     show-icons: true;
-    terminal: "wezterm";
-    ssh-command: "{terminal} {ssh-client} {host} [-p {port}]";
+    terminal: "ghostty";
+    ssh-command: "{terminal} -e '{ssh-client} {host} [-p {port}]'";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
@@ -18,4 +18,4 @@ configuration{
     matching: "normal";
 }
 
-@theme "gruvbox"
+@theme "carbonfox"

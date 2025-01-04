@@ -1,12 +1,12 @@
-@define-color bg0 #1d2021;
-@define-color bg #282828;
-@define-color fg #ebdbb2;
-@define-color sel #665c54;
-@define-color urg #b16286;
-@define-color accent #689d6a;
-@define-color accent0 #d79921;
-@define-color red #cc241d;
-@define-color green #98971a;
+@define-color bg0 #161616;
+@define-color bg #2a2a2a;
+@define-color fg #f2f4f8;
+@define-color sel #484848;
+@define-color urg #ee5396;
+@define-color accent #08bdba;
+@define-color accent0 #33b1ff;
+@define-color red #ee5396;
+@define-color green #25be6a;
 
 
 * {
@@ -41,15 +41,6 @@ window#waybar.hidden {
 window#waybar.empty #window {
     background-color: transparent;
 }
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
 
 .modules-right {
     margin: 10px 10px 0 0;

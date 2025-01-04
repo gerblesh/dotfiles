@@ -1,9 +1,11 @@
 command = /bin/fish
 auto-update-channel = tip
-theme = GruvboxDark
+theme = carbonfox
 font-size = 13
 
 background-opacity = 0.9
+
+# gtk-custom-css = /this/path/does/not/exist
 
 
 cursor-style-blink = false
@@ -13,14 +15,20 @@ cursor-style = underline
 cursor-style-blink = false
 
 
-gtk-custom-css = ?style.css
+
+gtk-custom-css = style.css
 window-decoration = false
 gtk-titlebar = true
 gtk-single-instance = true
 gtk-adwaita = true
-gtk-wide-tabs = false
+gtk-wide-tabs = true
 # adw-toolbar-style = flat
-gtk-tabs-location = bottom
+gtk-tabs-location = top
+
+window-padding-y = 0 
+window-padding-balance = true
+window-step-resize = false
+
 
 # Split/window management
 # keybind = alt+w=new_split:down

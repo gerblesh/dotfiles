@@ -1,8 +1,8 @@
 # Colors
-background-color=#282828
-text-color=#ebdbb2
-border-color=#1d2021
-progress-color=#1d2021
+background-color=#161616
+text-color=#f2f4f8
+border-color=#484848
+progress-color=#484848
 
 # Sizing
 font=Overpass: 15
@@ -21,19 +21,19 @@ icon-path=/usr/share/icons/Catppuccin-SE
 # Action menu
 on-button-left=exec makoctl menu -n "$id" rofi -dmenu -p 'Select action: ' && makoctl dismiss -n "$id"
 # Formatting
-format=<span color='#928374' size='smaller' style='italic'>%a</span>\n<span size='larger' weight='bold'>%s</span>\n%b
+format=<span color='#484848' size='smaller' style='italic'>%a</span>\n<span size='larger' weight='bold'>%s</span>\n%b
 
 [app-name=""]
-format=<span color='#928374' size='smaller' style='italic'>unkown</span>\n<span size='larger' weight='bold'>%s</span>\n%b
+format=<span color='#484848' size='smaller' style='italic'>unkown</span>\n<span size='larger' weight='bold'>%s</span>\n%b
 
 [actionable]
-format=<span color='#928374' size='smaller' style='italic'>%a</span>\n<span color='#cc241d' size='smaller' weight='bold'>(A) </span><span size='larger' weight='bold'>%s</span>\n%b
+format=<span color='#484848' size='smaller' style='italic'>%a</span>\n<span color='#ee5396' size='smaller' weight='bold'>(A) </span><span size='larger' weight='bold'>%s</span>\n%b
 
 [actionable app-name=""]
-format=<span color='#928374' size='smaller' style='italic'>unkown</span>\n<span color='#cc241d' size='smaller' weight='bold'>(A) </span><span size='larger' weight='bold'>%s</span>\n%b
+format=<span color='#484848' size='smaller' style='italic'>unkown</span>\n<span color='#ee5396' size='smaller' weight='bold'>(A) </span><span size='larger' weight='bold'>%s</span>\n%b
 
 [urgency=high]
-border-color=#b16286
+border-color=#ee5396
 default-timeout=0
 
 [app-name="sway"]
@@ -43,14 +43,14 @@ text-alignment=center
 format=<b>%s: %b</b>
 
 [category="volume"]
-border-color=#689d6a
-text-color=#689d6a
+border-color=#33b1ff
+text-color=#33b1ff
 
 [category="volume-muted"]
-border-color=#928374
-text-color=#928374
+border-color=#484848
+text-color=#484848
 
 [category="backlight"]
-border-color=#458688
-text-color=#458688
+border-color=#be95ff
+text-color=#be95ff
 

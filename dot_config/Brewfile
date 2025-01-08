@@ -35,6 +35,7 @@ brew "podlet"
 brew "gopls"
 brew "vhs"
 brew "presenterm"
+brew "cowsay"
 # Programming languages
 brew "golangci-lint"
 brew "just"

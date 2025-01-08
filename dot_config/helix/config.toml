@@ -30,5 +30,4 @@ max-indent-retain = 0
 
 [keys.normal]
 'z' = {'y'=':yank-diagnostic'}
-' ' = {'l'=':o .github', 'W'=':wa', 'q'=':wqa', 'Q'=':q!'}
-m = { f = { i = ["find_next_char", "select_textobject_inner"] } }
+' ' = {'l'=':o .github', 'W'=':wa', 'q'=':wqa', 'Q'=':q!', 'i' = ["find_next_char", "select_textobject_inner"]  }

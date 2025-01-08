@@ -94,7 +94,9 @@ if status is-interactive
     setup_homebrew
 
     function fish_greeting
-        # blank fish greeting
+        if which fortune >/dev/null 2>&1; and which cowsay >/dev/null 2>&1
+            fortune | cowsay
+        end
     end
 
     if which flatpak >/dev/null 2>&1
@@ -113,6 +115,7 @@ if status is-interactive
 
     if which hx >/dev/null 2>&1
         set EDITOR (which hx)
+        set SUDO_EDITOR $EDITOR
         bind --mode insert \ce "$EDITOR (fzf)"
     end
 

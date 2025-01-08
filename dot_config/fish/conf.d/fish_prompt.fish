@@ -56,7 +56,7 @@ function fish_mode_prompt
         case visual
             set vi_mode_symbol "V "
     end
-    echo -ns (set_color -od brblack) "$vi_mode_symbol" (set_color normal)
+    echo -ns (set_color -od brmagenta) "$vi_mode_symbol" (set_color normal)
 end
 
 function fish_prompt
@@ -97,7 +97,7 @@ function fish_right_prompt
     # end
 
     if test -e /run/.containerenv
-        echo -ns (set_color -od brblack) " "(string match -rg 'name="(.*)"'</run/.containerenv)(set_color normal)
+        echo -ns (set_color -od brmagenta) " "(string match -rg 'name="(.*)"'</run/.containerenv)(set_color normal)
     end
 
     async_print_buffer

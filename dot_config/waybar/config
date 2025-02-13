@@ -43,16 +43,16 @@
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
     },
     "mpris": {
- 	"format": " {status_icon} {dynamic}",
-        "interval": 1,
-        "dynamic-len": 40,
-	"status-icons": {
-		"playing": "▶",
-		"paused": "⏸",
-		"stopped": ""
-	},
-	"dynamic-order": ["title", "artist"],
-	"ignored-players": ["firefox"]
+        "format": " {dynamic}",
+        "interval": 0,
+        "dynamic-len": 20,
+        // "status-icons": {
+        //     "playing": "▶",
+        //     "paused": "⏸",
+        //     "stopped": ""
+        // },
+        "dynamic-order": ["title", "artist"],
+        "ignored-players": ["firefox"]
     },
     "idle_inhibitor": {
         "format": "{icon}",

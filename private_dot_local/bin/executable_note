@@ -1,0 +1,5 @@
+#!/bin/bash
+
+printf -v FILE '%(~/journal/%Y/%m/%d.md)T' -1
+
+hx -w "$HOME/journal" "$FILE"

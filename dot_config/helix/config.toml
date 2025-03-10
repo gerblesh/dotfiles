@@ -31,3 +31,9 @@ max-indent-retain = 0
 [keys.normal]
 'z' = {'y'=':yank-diagnostic'}
 ' ' = {'l'=':o .github', 'W'=':wa', 'q'=':wqa', 'Q'=':q!', 'i' = ["find_next_char", "select_textobject_inner"]  }
+# 'C-y' = [
+#   ':sh rm -f /tmp/yazi-path',
+#   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/yazi-path',
+#   ':open %sh{cat /tmp/yazi-path}',
+#   ':redraw',
+# ]

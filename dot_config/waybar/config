@@ -13,12 +13,13 @@
         "sway/scratchpad"
     ],
     "modules-center": [
-        "clock"
+        "clock",
+        "mpris",
     ],
     "modules-right": [
         "custom/power-profile",
         "sway/language",
-        "mpris",
+        // "mpris",
         "idle_inhibitor",
         "wireplumber",
         "backlight",
@@ -43,16 +44,22 @@
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
     },
     "mpris": {
-        "format": " {dynamic}",
+        "format": "{player_icon} {dynamic}",
         "interval": 0,
         "dynamic-len": 20,
+        "player-icons": {
+           "default": "▶",
+           "mpv": "",
+           "g4music": "🎵",
+           "firefox": "" 
+        },
         // "status-icons": {
         //     "playing": "▶",
         //     "paused": "⏸",
         //     "stopped": ""
         // },
-        "dynamic-order": ["title", "artist"],
-        "ignored-players": ["firefox"]
+        "dynamic-order": ["title", "artist", "album"],
+        // "ignored-players": ["firefox"]
     },
     "idle_inhibitor": {
         "format": "{icon}",

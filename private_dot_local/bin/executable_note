@@ -1,5 +1,13 @@
 #!/bin/bash
 
-printf -v FILE '%(~/journal/%Y/%m/%d.md)T' -1
+# Skibidi aaahh bash
+IFS="_"; name="$*"; unset IFS
+
+
+if [[ ! -z "$name" ]]; then
+  printf -v FILE '%(~/journal/%Y/%m/)T%s.md' -1 "$name"
+else
+  printf -v FILE '%(~/journal/%Y/%m/%d.md)T' -1
+fi
 
 hx -w "$HOME/journal" "$FILE"

@@ -15,7 +15,6 @@ gtk-custom-css = style.css
 window-decoration = false
 gtk-titlebar = true
 gtk-single-instance = true
-gtk-adwaita = true
 gtk-wide-tabs = true
 # adw-toolbar-style = flat
 gtk-tabs-location = top
@@ -27,7 +26,7 @@ window-step-resize = false
 # Split/window management
 # keybind = alt+w=new_split:down
 keybind = alt+w=new_split:auto
-keybind = alt+q=close_window
+keybind = alt+q=close_surface
 keybind = alt+t=new_tab
 
 # Split navigation
@@ -42,6 +41,7 @@ keybind = shift+alt+j=resize_split:down,10
 keybind = shift+alt+k=resize_split:up,10
 keybind = shift+alt+l=resize_split:right,10
 keybind = alt+z=toggle_split_zoom
+keybind = ctrl+shift+z=toggle_quick_terminal
 
 window-theme = ghostty
 

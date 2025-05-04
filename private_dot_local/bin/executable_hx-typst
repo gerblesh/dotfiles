@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# redirect stdout/err to /dev/null because fuck you
+FILE="$1"
+
+DIR="$(dirname "$FILE")"
+
+PDF="$(basename $FILE).pdf"
+
+if [ ! -d "$DIR" ]; then
+  mkdir -p "$DIR"
+fi
+
+touch "$FILE"
+
+typst watch "$FILE" >/dev/null 2>&1 & T_PID="$!"
+
+zathura "$DIR/note.pdf" >/dev/null 2>&1 & Z_PID="$!"
+
+hx -w "$HOME/journal/math" "$FILE"
+
+kill "$T_PID"
+kill "$Z_PID"

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+cd "$HOME/journal/math"
+
+FILE="$(fzf --query "typst |" --preview="bat --color=always {}")"
+
+if [ -n "$FILE"]; then
+  exit
+fi
+
+hx-typst "$FILE"

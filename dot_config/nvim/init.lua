@@ -24,7 +24,7 @@ vim.opt.relativenumber = true
 vim.opt.linebreak = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = ""
+-- vim.opt.mouse = ""
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
@@ -764,58 +764,9 @@ require("lazy").setup({
 					ghost_text = true,
 				},
 			})
-			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-			-- cmp.setup.cmdline({ "/", "?" }, {
-			-- 	mapping = cmp.mapping.preset.cmdline(),
-			-- 	sources = {
-			-- 		{ name = "buffer" },
-			-- 	},
-			-- })
-			--
-			-- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-			-- cmp.setup.cmdline(":", {
-			-- 	mapping = cmp.mapping.preset.cmdline(),
-			-- 	sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
-			-- })
 		end,
 	},
 
-	--	{ -- you can easily change to a different colorscheme.
-	--		-- change the name of the colorscheme plugin below, and then
-	--		-- change the command in the config to whatever the name of that colorscheme is
-	--		--
-	--		-- if you want to see what colorschemes are already installed, you can use `:telescope colorscheme`
-	--		"folke/tokyonight.nvim",
-	--		priority = 1000, -- make sure to load this before all the other start plugins
-	--		init = function()
-	--			-- load the colorscheme here.
-	--			-- like many other themes, this one has different styles, and you could load
-	--			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-	--			vim.cmd.colorscheme("tokyonight-storm")
-	--
-	--			-- you can configure highlights by doing something like
-	--			vim.cmd.hi("comment gui=none")
-	--		end,
-	--	},
-
-	-- {
-	-- 	"catppuccin/nvim",
-	-- 	name = "catppuccin",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	opts = {
-	-- 		transparent_background = true,
-	-- 	},
-	-- 	init = function()
-	-- 		-- load the colorscheme here.
-	-- 		-- like many other themes, this one has different styles, and you could load
-	-- 		-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-	-- 		vim.cmd.colorscheme("catppuccin")
-	--
-	-- 		-- you can configure highlights by doing something like
-	-- 		vim.cmd.hi("comment gui=none")
-	-- 	end,
-	-- },
 	{
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000,

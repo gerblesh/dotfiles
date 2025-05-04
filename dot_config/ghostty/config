@@ -3,7 +3,7 @@ auto-update-channel = tip
 theme = carbonfox
 font-size = 13
 
-background-opacity = 0.9
+background-opacity = 1.0
 
 cursor-style-blink = false
 shell-integration = fish
@@ -17,9 +17,10 @@ gtk-titlebar = true
 gtk-single-instance = true
 gtk-wide-tabs = true
 # adw-toolbar-style = flat
-gtk-tabs-location = top
+gtk-tabs-location = bottom
 
 window-padding-y = 0 
+window-padding-x = 0
 window-padding-balance = true
 window-step-resize = false
 
@@ -36,12 +37,14 @@ keybind = alt+k=goto_split:up
 keybind = alt+l=goto_split:right
 
 # Resize Splits
-keybind = shift+alt+h=resize_split:left,10
-keybind = shift+alt+j=resize_split:down,10
-keybind = shift+alt+k=resize_split:up,10
-keybind = shift+alt+l=resize_split:right,10
+keybind = ctrl+alt+h=resize_split:left,10
+keybind = ctrl+alt+j=resize_split:down,10
+keybind = ctrl+alt+k=resize_split:up,10
+keybind = ctrl+alt+l=resize_split:right,10
 keybind = alt+z=toggle_split_zoom
 keybind = ctrl+shift+z=toggle_quick_terminal
+
+quick-terminal-autohide = false
 
 window-theme = ghostty
 

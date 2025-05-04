@@ -1,8 +1,13 @@
 theme = "carbonfox_transparent"
+# word-completion = true
+# word-completion-length = 0
 
 [editor]
+jump-label-alphabet = "jfkdls;aurieowpqnvmcxz"
 line-number = "relative"
 mouse = true
+color-modes = true
+end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -11,6 +16,9 @@ select = "underline"
 
 [editor.whitespace]
 render = "all"
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
 
 [editor.indent-guides]
 render = true
@@ -25,15 +33,12 @@ enable = true
 max-wrap = 25 # increase value to reduce forced mid-word wrapping
 max-indent-retain = 0
 
-[keys.insert]
-'j' = {'k'='normal_mode','j'=[':insert-output /bin/echo -n j','move_char_right','insert_mode']}
+# [keys.insert]
+# 'j' = {'k'='normal_mode','j'=[':insert-output /bin/echo -n j','move_char_right','insert_mode']}
 
 [keys.normal]
 'z' = {'y'=':yank-diagnostic'}
-' ' = {'l'=':o .github', 'W'=':wa', 'q'=':wqa', 'Q'=':q!', 'i' = ["find_next_char", "select_textobject_inner"]  }
-# 'C-y' = [
-#   ':sh rm -f /tmp/yazi-path',
-#   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/yazi-path',
-#   ':open %sh{cat /tmp/yazi-path}',
-#   ':redraw',
-# ]
+' ' = {'l'=':o .github', 'W'=':wa', 'q'=':wqa', 'Q'=':q!'}
+"ret" = "goto_word"
+'L' = "move_next_sub_word_end"
+'H' = "move_prev_sub_word_start"

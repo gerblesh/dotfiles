@@ -1,4 +1,4 @@
 #!/bin/bash
 cd "$HOME/journal"
 
-hx -w "$HOME/journal" .
+glow -t "$HOME/journal"

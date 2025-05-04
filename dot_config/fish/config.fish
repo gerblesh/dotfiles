@@ -94,9 +94,13 @@ if status is-interactive
     setup_homebrew
 
     function fish_greeting
-        if which fortune >/dev/null 2>&1; and which cowsay >/dev/null 2>&1
-            fortune | cowsay
-        end
+        # if which fortune >/dev/null 2>&1; and which cowsay >/dev/null 2>&1
+        #     fortune | cowsay
+        # end
+        # if which glow >/dev/null 2>&1; and test -e ~/journal/todo.md
+        #     glow ~/journal/todo.md
+        # end
+
     end
 
     if which flatpak >/dev/null 2>&1
@@ -124,5 +128,8 @@ if status is-interactive
         bind --mode insert \cw __zoxide_zi
     end
 
+    if which mise >/dev/null 2>&1
+        mise activate fish | source
+    end
 
 end

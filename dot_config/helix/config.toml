@@ -1,6 +1,4 @@
 theme = "carbonfox_transparent"
-# word-completion = true
-# word-completion-length = 0
 
 [editor]
 jump-label-alphabet = "jfkdls;aurieowpqnvmcxz"
@@ -32,9 +30,6 @@ display-inlay-hints = false
 enable = true
 max-wrap = 25 # increase value to reduce forced mid-word wrapping
 max-indent-retain = 0
-
-# [keys.insert]
-# 'j' = {'k'='normal_mode','j'=[':insert-output /bin/echo -n j','move_char_right','insert_mode']}
 
 [keys.normal]
 'z' = {'y'=':yank-diagnostic'}

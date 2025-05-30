@@ -19,7 +19,6 @@
     "modules-right": [
         "custom/power-profile",
         "sway/language",
-        // "mpris",
         "idle_inhibitor",
         "wireplumber",
         "backlight",
@@ -46,21 +45,16 @@
     "mpris": {
         "format": "{player_icon} {dynamic}",
         "interval": 0,
-        // "dynamic-len": 20,
-        // "title-len":60
+        "max-length": 40,
         "player-icons": {
            "default": "▶",
            "mpv": "",
            "g4music": "🎵",
            "firefox": "" 
         },
-        // "status-icons": {
-        //     "playing": "▶",
-        //     "paused": "⏸",
-        //     "stopped": ""
-        // },
         "dynamic-order": ["title", "artist", "album"],
-        // "ignored-players": ["firefox"]
+
+        "dynamic-importance-order": ["title", "album", "artist"]
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -144,7 +138,7 @@
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
     "clock": {
-      "format": "{:%A, %B %d, %Y (%R)}  ",
+      "format": "{:%R}  ",
       "tooltip-format": "<tt><small>{calendar}</small></tt>",
       "calendar": {
         "mode": "year",

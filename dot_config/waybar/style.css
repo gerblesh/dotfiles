@@ -8,6 +8,14 @@
 @define-color red #ee5396;
 @define-color green #25be6a;
 
+.month {
+    color: @green;
+}
+
+.day {
+    color: @fg;
+}
+
 
 * {
     font-size: 20px;

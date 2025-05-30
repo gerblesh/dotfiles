@@ -5,7 +5,6 @@ font-size = 13
 
 background-opacity = 1.0
 
-cursor-style-blink = false
 shell-integration = fish
 shell-integration-features = no-cursor
 cursor-style = underline
@@ -16,7 +15,6 @@ window-decoration = false
 gtk-titlebar = true
 gtk-single-instance = true
 gtk-wide-tabs = true
-# adw-toolbar-style = flat
 gtk-tabs-location = bottom
 
 window-padding-y = 0 

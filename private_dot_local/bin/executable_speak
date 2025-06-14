@@ -1,0 +1,10 @@
+#!/bin/bash
+
+FORTUNE=$(fortune)
+PID=$$
+
+echo "$FORTUNE" | cowsay
+echo "$FORTUNE" | mimic -voice ap -o "/tmp/$PID.wav"
+
+pw-cat -p "/tmp/$PID.wav"
+rm "/tmp/$PID.wav"

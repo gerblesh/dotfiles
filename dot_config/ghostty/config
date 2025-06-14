@@ -3,7 +3,7 @@ auto-update-channel = tip
 theme = carbonfox
 font-size = 13
 
-background-opacity = 1.0
+background-opacity = 0.8
 
 shell-integration = fish
 shell-integration-features = no-cursor

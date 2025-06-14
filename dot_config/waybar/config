@@ -13,8 +13,8 @@
         "sway/scratchpad"
     ],
     "modules-center": [
-        "clock",
-        "mpris",
+        "clock"
+        // "mpris",
     ],
     "modules-right": [
         "custom/power-profile",

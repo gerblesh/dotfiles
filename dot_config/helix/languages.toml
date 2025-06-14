@@ -1,0 +1,54 @@
+[language-server.godot]
+command = "nc" 
+args = [ "127.0.0.1", "6005"]
+
+[[language]]
+name = "gdscript"
+language-servers = [ "godot" ]
+
+[[language]]
+name = "python"
+language-servers = [ "pyright" ]
+
+[[language]]
+name = "markdown"
+language-servers = [ "markdown-oxide" ]
+
+[language-server.tinymist]
+command = "tinymist"
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist"]
+
+[[language]]
+name = "haxe"
+scope = "source.haxe"
+injection-regex = "Haxe"
+file-types = ["hx"]
+roots = [ "build.hxml" ]
+indent = { tab-width = 4, unit = "    " }
+
+[[grammar]]
+name = "haxe"
+source = { git = "https://github.com/gerblesh/tree-sitter-haxe" , rev = "try-catch-while-for-enum" }
+
+[[language]]
+name = "ghostty"
+scope = "source.ghostty"
+file-types = [ { glob = "ghostty/config" }]
+comment-tokens = "#"
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "ghostty"
+source = { git = "https://github.com/bezhermoso/tree-sitter-ghostty" , rev = "main" }
+
+[language-server.ruby-lsp]
+command = "ruby-lsp"
+config = { diagnostics = true, formatting = true }
+
+[[language]]
+name = "ruby"
+language-servers = ["ruby-lsp"]
+auto-format = true

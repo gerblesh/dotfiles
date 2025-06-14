@@ -55,6 +55,14 @@ if status is-interactive
         chezmoi git pull
     end
 
+    function flatdump
+        flatpak list --user --columns=application >~/.config/Flatpakfile
+    end
+
+    function flatinstall
+        xargs -a ~/.config/Flatpakfile flatpak install --user -y
+    end
+
     # set fish_vi_force_cursor 1
 
     function setup_homebrew

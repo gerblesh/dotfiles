@@ -59,6 +59,15 @@ if status is-interactive
         flatpak list --user --columns=application >~/.config/Flatpakfile
     end
 
+    function groot
+        set GROOT (git rev-parse --show-toplevel 2>&1)
+        if test $status -ne 0
+            echo "Not inside a Git repository."
+            return 1
+        end
+        cd $GROOT
+    end
+
     function flatinstall
         xargs -a ~/.config/Flatpakfile flatpak install --user -y
     end

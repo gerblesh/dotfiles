@@ -10,7 +10,10 @@ SETUVAR __fish_initialized:3800
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR async_prompt_buffer_c69a7eb082dba7e5d91b6cf45e28c1668dbd3e01:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x20\x20\u21911\x29\x1b\x28B\x1b\x5bm
+SETUVAR async_prompt_buffer_589be4650a435ce838c8aa501ad015d325b6cf6b:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
+SETUVAR async_prompt_buffer_b291833d7c4a9bbaae5a5f5f27c81cecd139546d:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
+SETUVAR async_prompt_buffer_c69a7eb082dba7e5d91b6cf45e28c1668dbd3e01:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
+SETUVAR async_prompt_buffer_ef17f7489fc56d536817cd8bb795ce20602aba3b:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:blue

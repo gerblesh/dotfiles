@@ -19,7 +19,7 @@ layer=top
 icon-path=/usr/share/icons/Catppuccin-SE
 
 # Action menu
-on-button-left=exec makoctl menu -n "$id" rofi -dmenu -p 'Select action: ' && makoctl dismiss -n "$id"
+on-button-left=exec makoctl menu -n "$id" -- rofi -dmenu -p 'Select action: ' && makoctl dismiss -n "$id"
 # Formatting
 format=<span color='#484848' size='smaller' style='italic'>%a</span>\n<span size='larger' weight='bold'>%s</span>\n%b
 

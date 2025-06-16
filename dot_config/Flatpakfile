@@ -1,5 +1,5 @@
-app.devsuite.Ptyxis
 app.zen_browser.zen
+com.github.paolostivanin.OTPClient
 com.discordapp.Discord
 com.github.PintaProject.Pinta
 com.github.neithern.g4music
@@ -21,15 +21,11 @@ org.blender.Blender
 org.dune3d.dune3d
 org.filezillaproject.Filezilla
 org.freecad.FreeCAD
-org.freecadweb.FreeCAD.Manual
-org.freedesktop.LinuxAudio.Plugins.swh
-org.freedesktop.LinuxAudio.Plugins.swh
 org.gnome.DejaDup
 org.gnome.Loupe
 org.gnome.Snapshot
 org.gnome.World.Citations
 org.gnome.World.PikaBackup
-org.gtk.Gtk3theme.adw-gtk3-dark
 org.inkscape.Inkscape
 org.localsend.localsend_app
 org.musicbrainz.Picard

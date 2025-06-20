@@ -1,5 +1,5 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
+# tap "homebrew/bundle"
+# tap "homebrew/services"
 tap "caarlos0/tap"
 tap "danielgatis/imgcat"
 
@@ -44,6 +44,7 @@ brew "rustup"
 brew "typst"
 brew "uv"
 brew "imgcat"
+brew "fortune"
 
 # Dev tools
 brew "zig"

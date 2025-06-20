@@ -1,9 +1,9 @@
 command = /bin/fish
 auto-update-channel = tip
-theme = carbonfox
+theme = "carbonfox"
 font-size = 13
 
-background-opacity = 0.8
+background-opacity = 0.9
 
 shell-integration = fish
 shell-integration-features = no-cursor

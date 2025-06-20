@@ -48,11 +48,13 @@ if status is-interactive
         chezmoi git add .
         chezmoi git commit
     end
+
     function cgitps # chezmoi git push
         chezmoi git push
     end
-    function cgitpl # chezmoi git pull
+    function cgitpl # chezmoi git pull, and apply
         chezmoi git pull
+        chezmoi apply
     end
 
     function flatdump

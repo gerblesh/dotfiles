@@ -98,15 +98,26 @@ if status is-interactive
     fish_add_path -P --prepend /usr/local/bin
     fish_add_path -P --prepend "$HOME"/.local/bin
     fish_add_path -P --append "$HOME"/.cargo/bin
+    # Gruvbox
     # set -Ux FZF_DEFAULT_OPTS "--color=fg:#ebdbb2,hl:#b16286 --color=fg+:#689d6a,bg+:#32302f,hl+:#d3869b --color=info:#d65d0e,prompt:#458588,pointer:#fe8019 --color=marker:#8ec07c,spinner:#cc241d,header:#fabd2f --preview='fzf-preview.sh {}'"
 
+    # Carbonfox
     set -Ux FZF_DEFAULT_OPTS '
-  --color=fg:-1,fg+:#6e6f70,bg:-1,bg+:#282828
-  --color=hl:#33b1ff,hl+:#52bdff,info:#afaf87,marker:#25be6a
-  --color=prompt:#33b1ff,spinner:#be95ff,pointer:#be95ff,header:#87afaf
-  --color=border:#262626,label:#aeaeae,query:#d9d9d9
-  --preview-window="border-rounded" --prompt="  " --marker="↪" --pointer="◆"
-  --separator="─" --scrollbar="│"'
+    --color=fg:-1,fg+:#6e6f70,bg:-1,bg+:#282828
+    --color=hl:#33b1ff,hl+:#52bdff,info:#afaf87,marker:#25be6a
+    --color=prompt:#33b1ff,spinner:#be95ff,pointer:#be95ff,header:#87afaf
+    --color=border:#262626,label:#aeaeae,query:#d9d9d9
+    --preview-window="border-rounded" --prompt="  " --marker="↪" --pointer="◆"
+    --separator="─" --scrollbar="│"'
+
+    # Kaolin
+    # set -Ux FZF_DEFAULT_OPTS '
+    #   --color=fg:#c5c8c6,fg+:#ffffff,bg:#1d1f21,bg+:#1d1f21
+    #   --color=hl:#81a2be,hl+:#8abeb7,info:#f0c674,marker:#b5bd68
+    #   --color=prompt:#81a2be,spinner:#b294bb,pointer:#b294bb,header:#8abeb7
+    #   --color=border:#1d1f21,label:#c5c8c6,query:#ffffff
+    #   --preview-window=border-rounded --prompt="  " --marker="↪" --pointer="◆"
+    #   --separator="─" --scrollbar="│"'
     set SHELL /bin/fish
 
     setup_vi_mode

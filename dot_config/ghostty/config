@@ -49,4 +49,4 @@ window-theme = ghostty
 font-family = SF Mono
 
 # FIXME: temp (until more programs support ghostty terminfo)!
-term = kitty
+# term = kitty

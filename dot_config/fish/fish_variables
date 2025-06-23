@@ -21,6 +21,7 @@ SETUVAR async_prompt_buffer_34c07b932ffaa55a6edeae5263da009baa9b1787:\x1b\x5b1m\
 SETUVAR async_prompt_buffer_3829efcc0949b5680c59a7217bd9cd6afff3ddff:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_38964098963faf7e2c85f3ab8118356325f7506b:\x1b\x5b1m\x1b\x5b35m\x20\x28live\x20\x2a\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_3d8bb72c506657b01d231616310c18c6c07fc7f8:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
+SETUVAR async_prompt_buffer_4077d62ee06e9247368a5b4c6053f8f026f8bf04:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_456da38c7dd494a62bc1ccf66616d70cf139ad30:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_4827adf6169d489d40b4c1433c0a83b53688f047:\x1b\x5b1m\x1b\x5b35m\x20\x28live\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_565f3ec25744b80c886d127ca5b690d5d017ac55:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
@@ -30,6 +31,7 @@ SETUVAR async_prompt_buffer_6de94a90c0d9220374bef8bd8e871092e5a2fdbe:\x1b\x5b1m\
 SETUVAR async_prompt_buffer_6e2c0b53175de01b20fbc0e74ff889957d116c58:\x1b\x5b1m\x1b\x5b35m\x20\x28live\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_7ece9255978c94459882954e91d53e8ded4da9ff:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_8a7cb791f8677c9a4dffc6607318356386972545:\x1b\x5b1m\x1b\x5b35m\x20\x28live\x20\x2a\x29\x1b\x28B\x1b\x5bm
+SETUVAR async_prompt_buffer_8c47c3e348c82d4f9b4eb0765eea02e724cca790:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_9b265b171ec1573fc2e3db310f9e7251fa23f10f:\x1b\x5b1m\x1b\x5b35m\x20\x28live\x20\x2a\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_9fe3590f212e03195499e49329d3c34fd98f1a1e:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_aa86629ba10431b932321f7884053bb67d15ea70:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
@@ -37,7 +39,9 @@ SETUVAR async_prompt_buffer_b291833d7c4a9bbaae5a5f5f27c81cecd139546d:\x1b\x5b1m\
 SETUVAR async_prompt_buffer_b32e86403f4e96e706ae9fa14532625a373c234f:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_bb9b1f73e76e7d042ca0b077f80c3d19ef30d783:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_c415889834e0ea6dc4f55fabcc5a68a571d4a1c4:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
+SETUVAR async_prompt_buffer_c5fa6534511b66ae58cc5976d2711b97ae460a67:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_c69a7eb082dba7e5d91b6cf45e28c1668dbd3e01:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
+SETUVAR async_prompt_buffer_d1dcf7b6cb564b962970ef16a38d2211267c8864:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_d4dda92e102ddd7a9c2f52b5a84c37dd99d0a0ad:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_e3613ee266c3d9c8fdab50843bda1d7dd0f750dd:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_ef17f7489fc56d536817cd8bb795ce20602aba3b:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
@@ -65,7 +69,12 @@ SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrbl
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
-SETUVAR --export fish_cursor_default:block
+SETUVAR --export fish_cursor_default:underscore
+SETUVAR --export fish_cursor_external:underscore
+SETUVAR --export fish_cursor_insert:underscore
+SETUVAR --export fish_cursor_replace:underscore
+SETUVAR --export fish_cursor_replace_one:underscore
+SETUVAR --export fish_cursor_visual:underscore
 SETUVAR fish_key_bindings:fish_vi_key_bindings
 SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di

@@ -14,35 +14,32 @@ if status is-interactive
         rm -f -- "$tmp"
     end
 
-    # function fzf_change_zoxide ()
-    #     set dir (zoxide query --list | fzf)
-    #     if [ "$dir"  != "" ];
-    #         cd "$dir"
-    #     end
-    # end
     function setup_vi_mode
-        set -Ux fish_cursor_default block
+        set -Ux fish_cursor_default underscore
         # Set the insert mode cursor to a line
-        # set -Ux fish_cursor_insert line
+        set -Ux fish_cursor_insert underscore
         # Set the replace mode cursors to an underscore
-        # set -Ux fish_cursor_replace_one underscore
-        # set -Ux fish_cursor_replace underscore
+        set -Ux fish_cursor_replace_one underscore
+        set -Ux fish_cursor_replace underscore
         # Set the external cursor to a line. The external cursor appears when a command is started.
         # The cursor shape takes the value of fish_cursor_default when fish_cursor_external is not specified.
-        # set -Ux fish_cursor_external line
+        set -Ux fish_cursor_external underscore
         # The following variable can be used to configure cursor shape in
         # visual mode, but due to fish_cursor_default, is redundant here
-        # set -Ux fish_cursor_visual block
+        set -Ux fish_cursor_visual underscore
 
         # Commands to run in interactive sessions can go here
-        # fish_vi_key_bindings
+        fish_vi_key_bindings
     end
+
     function ba # brew apply
         brew bundle --cleanup --file ~/.config/Brewfile
     end
+
     function eb # edit brew
         $EDITOR ~/.config/Brewfile
     end
+
     function cgitcm # chezmoi git commit
         chezmoi re-add
         chezmoi git add .
@@ -52,6 +49,7 @@ if status is-interactive
     function cgitps # chezmoi git push
         chezmoi git push
     end
+
     function cgitpl # chezmoi git pull, and apply
         chezmoi git pull
         chezmoi apply

@@ -4,10 +4,6 @@ if [[ -z "$EDITOR" ]]; then
   EDITOR="vi"
 fi
 
-if [[ -z "$EDITOR_WRAPPER" ]]; then
-  EDITOR_WRAPPER="$EDITOR"
-fi
-
 if [[ -z "$FILTER" ]]; then
   FILTER="*.md"
 fi
@@ -20,4 +16,4 @@ if [[ ! -e "$FILE" ]]; then
   exit
 fi
 
-"$EDITOR_WRAPPER" "$FILE"
+"$EDITOR" "$FILE"

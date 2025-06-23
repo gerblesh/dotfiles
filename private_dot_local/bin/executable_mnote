@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-# Skibidi aaahh bash basically just sets the delimeter to underscore to make my life not living regex hell :), ik it's probably infinitely borked but idgaf
+if [[ -z "$EDITOR" ]]; then
+  EDITOR="vi"
+fi
+
+# bash wizardry that basically just sets the delimeter to underscore to make my life not living regex hell :), ik it's probably infinitely borked but idgaf
 IFS="_"; name="$*"; unset IFS
 
 if [[ ! -z "$name" ]]; then
@@ -9,4 +13,4 @@ else
   printf -v FILE '%s/%(journal/math/%Y/%m/%d/note.typst)T' "$HOME"
 fi
 
-hx-typst "$FILE"
+$EDITOR "$FILE"

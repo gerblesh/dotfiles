@@ -1,4 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+if [[ -z "$EDITOR" ]]; then
+  EDITOR="vi"
+fi
+
+if [[ -z "$EDITOR_WRAPPER" ]]; then
+  EDITOR_WRAPPER="$EDITOR"
+fi
+
+if [[ -z "$FILTER" ]]; then
+  FILTER="*.md"
+fi
+
 cd "$HOME/journal"
 
-glow -t "$HOME/journal"
+FILE="$(fd --glob "$FILTER" "$PWD" | fzf --preview='bat --style=numbers -f --terminal-width $FZF_PREVIEW_COLUMNS {}' --preview-window=right,70%)"
+
+if [[ ! -e "$FILE" ]]; then
+  exit
+fi
+
+"$EDITOR_WRAPPER" "$FILE"

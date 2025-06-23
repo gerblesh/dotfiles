@@ -32,11 +32,15 @@ max-wrap = 25 # increase value to reduce forced mid-word wrapping
 max-indent-retain = 0
 
 [keys.normal]
-'z' = {'y'=':yank-diagnostic'}
 ' ' = {'l'=':o .github', 'W'=':wa', 'q'=':wqa', 'Q'=':q!'}
 "ret" = "goto_word"
 'L' = "move_next_sub_word_end"
 'H' = "move_prev_sub_word_start"
+
+[keys.normal.space]
+# blursed regex for removing the file extension and replacing it with .pdf
+z = ":sh zathura \"$(echo %{buffer_name} | sed 's/\\.[^.]*$/.pdf/')\" "
+'i' = ':yank-diagnostic'
 
 
 # Vim-like jumping stuffs

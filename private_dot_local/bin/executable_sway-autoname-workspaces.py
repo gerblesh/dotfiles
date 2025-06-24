@@ -4,7 +4,6 @@
 # or pip).
 # It adds icons to the workspace name for each open window.
 # Set your keybindings like this: set $workspace1 workspace number 1
-# Add your icons to WINDOW_ICONS.
 # Based on https://github.com/maximbaz/dotfiles/blob/master/bin/i3-autoname-workspaces
 
 import json

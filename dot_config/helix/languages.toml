@@ -2,6 +2,9 @@
 command = "nc" 
 args = [ "127.0.0.1", "6005"]
 
+[language-server.colors]
+command = "uwu_colors"
+
 [[language]]
 name = "gdscript"
 language-servers = [ "godot" ]
@@ -55,6 +58,12 @@ source = { git = "https://github.com/bezhermoso/tree-sitter-ghostty" , rev = "ma
 [language-server.ruby-lsp]
 command = "ruby-lsp"
 config = { diagnostics = true, formatting = true }
+
+[[language]]
+name = "swaylock"
+scope = "source.swaylock"
+file-types = [{ glob = "swaylock/config" }]
+language-servers = [ "colors" ]
 
 [[language]]
 name = "ruby"

@@ -145,10 +145,18 @@ if status is-interactive
         alias cat="bat"
     end
 
+    function __editor_fzf
+        set FZF_RET (fzf)
+        if test $status != 0
+            return
+        end
+        "$EDITOR" "$FZF_RET"
+    end
+
     if which hx >/dev/null 2>&1
         set EDITOR (which hx)
         set SUDO_EDITOR $EDITOR
-        bind --mode insert \ce "$EDITOR (fzf)"
+        bind --mode insert \ce __editor_fzf
     end
 
     if which zoxide >/dev/null 2>&1
@@ -160,4 +168,13 @@ if status is-interactive
         mise activate fish | source
     end
 
+    function __select_from_last
+        set -l FZF_OUT (eval $history[1] | fzf)
+        if test -n "$FZF_OUT"
+            commandline -a "$FZF_OUT "
+            commandline -f end-of-line
+        end
+    end
+
+    bind --mode insert \cn __select_from_last
 end

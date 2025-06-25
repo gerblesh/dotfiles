@@ -1,4 +1,3 @@
 #!/usr/bin/env fish
 
-
 ghostty --class="com.gar.floatterm" --background-opacity=1.0 --window-height=33 --window-width=130

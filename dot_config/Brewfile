@@ -51,6 +51,7 @@ brew "distrobox"
 brew "hugo"
 brew "nvim"
 brew "luarocks"
+brew "devcontainer"
 
 # Backup
 brew "chezmoi"      # Dotfile management

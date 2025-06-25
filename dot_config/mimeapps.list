@@ -1,0 +1,17 @@
+[Default Applications]
+inode/directory=thunar.desktop
+image/jpeg=imv-dir.desktop
+image/png=imv.desktop
+image/svg+xml=imv.desktop
+image/webp=imv.desktop
+application/x-zerosize=helix.desktop
+text/plain=helix.desktop
+
+[Added Associations]
+image/jpeg=imv-dir.desktop;
+image/png=imv.desktop;
+image/svg+xml=imv.desktop;
+image/webp=imv.desktop;
+image/gif=imv.desktop;
+image/heif=org.chromium.Chromium.desktop;
+application/x-zerosize=helix.desktop;

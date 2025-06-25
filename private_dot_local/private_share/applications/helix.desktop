@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Helix
+Comment=Custom Desktop Entry for Helix
+Categories=System;
+Exec=/home/user/.local/bin/floatterm-exec fish -ic hx
+Keywords=helix;
+Type=Application

@@ -27,8 +27,8 @@ config.window_padding = {
 	top = 3,
 	bottom = 3,
 }
-local gruvbox = wezterm.color.get_builtin_schemes()["GruvboxDark"]
-config.color_scheme = "GruvboxDark"
+local gruvbox = wezterm.color.get_builtin_schemes()["carbonfox"]
+config.color_scheme = "carbonfox"
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 20
 config.colors = {
@@ -207,55 +207,6 @@ config.keys = {
 	-- Paste from Copy Mode
 	{ key = "]", mods = "LEADER", action = wezterm.action.PasteFrom("PrimarySelection") },
 	{ key = "s", mods = "CTRL", action = sessionizer.show },
-	-- {
-	-- 	key = "h",
-	-- 	mods = "LEADER",
-	-- 	action = wezterm.action_callback(function(window, pane)
-	-- 		-- Here you can dynamically construct a longer list if needed
-	-- 		local home = wezterm.home_dir
-	-- 		local workspaces = {
-	-- 			{ id = home, label = "default" },
-	-- 			{ id = home, label = "Home" },
-	-- 			{ id = home .. "/Documents/Rust/", label = "Rust" },
-	-- 			{ id = home .. "/Documents/Go Projects/", label = "Golang" },
-	-- 			{ id = home .. "/Documents/C/", label = "C" },
-	-- 			{ id = home .. "/Documents/csharp/", label = "C Sharp" },
-	-- 			{ id = home .. "/Documents/Processing/", label = "Processing" },
-	-- 			{ id = home .. "/Documents/Godot/", label = "Godot" },
-	-- 			{ id = home .. "/Documents/Neorg/", label = "Neorg" },
-	-- 			{ id = home .. "/.config/", label = "Config" },
-	-- 			{ id = home .. "/Documents/Ublue/", label = "Universal Blue" },
-	-- 		}
-	--
-	-- 		window:perform_action(
-	-- 			wezterm.action.InputSelector({
-	-- 				action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
-	-- 					if not id and not label then
-	-- 						wezterm.log_info("cancelled")
-	-- 					else
-	-- 						wezterm.log_info("id = " .. id)
-	-- 						wezterm.log_info("label = " .. label)
-	-- 						inner_window:perform_action(
-	-- 							wezterm.action.SwitchToWorkspace({
-	-- 								name = label,
-	-- 								spawn = {
-	-- 									label = "Workspace: " .. label,
-	-- 									cwd = id,
-	-- 								},
-	-- 							}),
-	-- 							inner_pane
-	-- 						)
-	-- 					end
-	-- 				end),
-	-- 				title = "Choose Workspace",
-	-- 				choices = workspaces,
-	-- 				fuzzy = true,
-	-- 				fuzzy_description = "Fuzzy find and/or make a workspace 󱝩 ",
-	-- 			}),
-	-- 			pane
-	-- 		)
-	-- 	end),
-	-- },
-}
+	}
 
 return config

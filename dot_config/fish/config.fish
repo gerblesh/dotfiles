@@ -4,6 +4,7 @@ if status is-interactive
     set -x MANROFFOPT -c
     # set HOME /var/home/user
     fish_add_path -P --prepend "$HOME"/.local/bin
+    fish_add_path -P "$HOME/.dotnet/tools"
     set -Ux XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/linuxbrew/.linuxbrew/share"
     function yy
         set tmp (mktemp -t "yazi-cwd.XXXXXX")

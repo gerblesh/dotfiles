@@ -165,6 +165,11 @@ if status is-interactive
         bind --mode insert \cw __zoxide_zi
     end
 
+    if which lazygit >/dev/null 2>&1
+        alias lg=lazygit
+        bind --mode insert \cg lazygit
+    end
+
     if which mise >/dev/null 2>&1
         mise activate fish | source
     end

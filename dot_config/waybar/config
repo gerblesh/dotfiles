@@ -17,7 +17,7 @@
         // "mpris",
     ],
     "modules-right": [
-        "custom/power-profile",
+        "power-profiles-daemon",
         "sway/language",
         "idle_inhibitor",
         "wireplumber",
@@ -162,5 +162,17 @@
       "interval": 10,
       "on-click": "$HOME/.config/waybar/scripts/powerprofile-menu.sh",
       "exec": "$HOME/.config/waybar/scripts/powerprofile.sh"
+    },
+
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
     }
 }]

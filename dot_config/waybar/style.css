@@ -7,6 +7,7 @@
 @define-color accent0 #33b1ff;
 @define-color red #ee5396;
 @define-color green #25be6a;
+@define-color lime #2dc7c4;
 
 .month {
     color: @green;
@@ -28,6 +29,7 @@ tooltip {
     background-color: @bg;
     border: 0px;
 }
+
 tooltip label {
     color: @fg;
 }
@@ -111,7 +113,7 @@ button:hover {
     background-color: @urg;
 }
 
-#custom-power-profile,
+#power-profiles-daemon,
 #language,
 #idle_inhibitor,
 #cava,
@@ -194,16 +196,16 @@ label:focus {
     color: @bg;
 }
 
-#custom-power-profile.power-saver {
+#power-profiles-daemon.power-saver {
     box-shadow: inset 0 3px @red;
 }
 
-#custom-power-profile.balanced {
+#power-profiles-daemon.balanced {
     box-shadow: inset 0 3px @green;
 }
 
-#custom-power-profile.performance {
-    box-shadow: inset 0 3px @urg;
+#power-profiles-daemon.performance {
+    box-shadow: inset 0 3px @lime;
 }
 
 #tray menu {

@@ -6,6 +6,7 @@ image/svg+xml=imv.desktop
 image/webp=imv.desktop
 application/x-zerosize=helix.desktop
 text/plain=helix.desktop
+text/txt=helix.desktop
 
 [Added Associations]
 image/jpeg=imv-dir.desktop;

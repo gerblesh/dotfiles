@@ -1,7 +1,7 @@
 // -*- mode: jsonc -*-
 [{
     // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "top", // Waybar position (top|bottom|left|right)
     // "height": 24,  Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
@@ -13,12 +13,12 @@
         "sway/scratchpad"
     ],
     "modules-center": [
-        "clock"
-        // "mpris",
+        "sway/language",
+        "clock",
+        "mpris",
     ],
     "modules-right": [
         "power-profiles-daemon",
-        "sway/language",
         "idle_inhibitor",
         "wireplumber",
         "backlight",
@@ -102,29 +102,35 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip-format": "{percent}%",
+        "tooltip": true,
     },
     "battery": {
         "states": {
-            // "good": 95,
+            "full": 100,
+            "good": 95,
+            "mid": 80,
             "warning": 30,
             "critical": 20
         },
-        "format": "{icon} {capacity}%",
-        "format-full": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
+        "format": "{icon}",
+        "format-full": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        "tooltip-format": "{capacity}%, {time}",
+        "tooltip": true,
+        // "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "wireplumber": {
         "scroll-step": 5, // %, can be a float
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}% ",
-        "format-bluetooth-muted": "󰝟 {icon}",
+        "format": "{icon}",
+        "format-bluetooth": "{icon} ",
+        "format-bluetooth-muted": "󰝟 ",
         "format-muted": "󰝟",
         "format-icons": {
             "headphone": "",
@@ -135,7 +141,14 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip-format": "{volume}%",
+        "tooltip": true,
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "vertical"
     },
     "clock": {
       "format": "{:%R}  ",
@@ -155,15 +168,6 @@
         }
       },
     },
-    "custom/power-profile": {
-      "format": "{}",
-      "tooltip": true,
-      "return-type": "json",
-      "interval": 10,
-      "on-click": "$HOME/.config/waybar/scripts/powerprofile-menu.sh",
-      "exec": "$HOME/.config/waybar/scripts/powerprofile.sh"
-    },
-
     "power-profiles-daemon": {
       "format": "{icon}",
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",

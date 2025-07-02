@@ -52,6 +52,7 @@ brew "hugo"
 brew "nvim"
 brew "luarocks"
 brew "devcontainer"
+brew "postgresql@17"
 
 # Backup
 brew "chezmoi"      # Dotfile management

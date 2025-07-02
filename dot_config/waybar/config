@@ -1,16 +1,15 @@
 // -*- mode: jsonc -*-
 [{
     // "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
+    "position": "left", // Waybar position (top|bottom|left|right)
     // "height": 24,  Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
-        "cava",
+        "sway/scratchpad",
         "sway/mode",
-        "sway/scratchpad"
     ],
     "modules-center": [
         "sway/language",
@@ -27,11 +26,80 @@
     ],
     // Modules configuration
     "sway/workspaces": {
+        // "window-rewrite-default": "",
+        // "window-format": "{name}",
+        // "window-rewrite": {
+        //    "dev.deedles.trayscale": "󱗼",
+        //    "firefox": "",
+        //    "godot": "",
+        //    "discord": "󰙯",
+        //    "vesktop": "󰙯",
+        //    "foot": "",
+        //    "org.wezfurlong.wezterm": "",
+        //    "com.mitchellh.ghostty": "",
+        //    "kitty": "",
+        //    "brave-browser": "",
+        //    "pragtical": "",
+        //    "dev.alextren.spot": "",
+        //    "com.github.neithern.g4music": "󰝚",
+        //    "thunar": "󰪶",
+        //    "mpv": "󰈫",
+        //    "imv": "",
+        //    "com.obsproject.studio": "󰑋",
+        //    "obsidian": "󱓧",
+        //    "mullvad vpn": "󰒄",
+        //    "signal": "󰆉",
+        //    "librewolf": "󰈹",
+        //    "firefox": "󰈹",
+        //    "zen": "󰈹",
+        //    "de.haeckerfelix.fragments": "󱑣",
+        //    "steamwebhelper": "󰓓",
+        //    "dolphin-emu": "󱢴",
+        //    "yuzu": "󰟡",
+        //    "info.cemu.cemu": "󰜭",
+        //    "otpclient": "󰥿",
+        //    "com.github.tchx84.flatseal": "",
+        //    "com.github.gradienceteam.gradience.devel": "",
+        //    "io.github.flattool.warehouse": "",
+        //    "io.missioncenter.missioncenter": "󰨇",
+        //    "gnome-boxes": "󰹑",
+        //    "blender": "󰂫",
+        //    "com.usebottles.bottles": "󰡶",
+        //    "org.gnome.world.pikabackup": "󰁯",
+        //    "org.gnome.clocks": "",
+        //    "com.gar.todo": "",
+        //    "com.gar.floatterm": "",
+        //    "com.gar.wallpaper": "󰥷",
+        //  },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": [],
+        },
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "󰝚",
+            "6": "󰹑",
+            "7": "󰓓",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            // "urgent": "",
+            // "focused": "",
+            "default": "",
+        },
         "all-outputs": true,
-        "warp-on-scroll": false,
-        "enable-bar-scroll": true,
-        "disable-scroll-wraparound": true,
-        "format": "{value}",
+        "format": "{icon}",
     },
     "sway/window": {
         "format": "{title}",
@@ -43,7 +111,7 @@
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
     },
     "mpris": {
-        "format": "{player_icon} {dynamic}",
+        "format": "{player_icon}",
         "interval": 0,
         "max-length": 40,
         "player-icons": {
@@ -67,7 +135,7 @@
         "format": "{}"
     },
     "sway/scratchpad": {
-        "format": "{icon} {count}",
+        "format": "{icon}\n{count}",
         "show-empty": false,
         "format-icons": ["", ""],
         "tooltip": true,
@@ -79,11 +147,6 @@
     },
     "load": {
         "format": " {}"
-    },
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -101,7 +164,6 @@
         "format-icons": ["", "", ""]
     },
     "backlight": {
-        // "device": "acpi_video1",
         "format": "{icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
         "tooltip-format": "{percent}%",
@@ -116,15 +178,15 @@
             "critical": 20
         },
         "format": "{icon}",
-        "format-full": "{icon}",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-full": "󱟢",
+        // "format-charging": "",
+        // "format-plugged": "",
         "tooltip-format": "{capacity}%, {time}",
         "tooltip": true,
         // "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁿", "󰂀", "󰂁", "󰂂"]
     },
     "wireplumber": {
         "scroll-step": 5, // %, can be a float
@@ -151,8 +213,9 @@
         "orientation": "vertical"
     },
     "clock": {
-      "format": "{:%R}  ",
+      // "format": "{:%R}  ",
       "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "format": "{:%H\n%M}",
       "calendar": {
         "mode": "year",
         "mode-mon-col": 3,

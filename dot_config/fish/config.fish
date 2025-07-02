@@ -181,6 +181,7 @@ if status is-interactive
             commandline -f end-of-line
         end
     end
+    alias psql=psql-17
 
     bind --mode insert \cn __select_from_last
 end

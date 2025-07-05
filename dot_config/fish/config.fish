@@ -163,6 +163,7 @@ if status is-interactive
     if which zoxide >/dev/null 2>&1
         eval (zoxide init --cmd cd fish | source) >/dev/null 2>&1
         bind --mode insert \cw __zoxide_zi
+        bind --mode insert \cp '__zoxide_zi && __editor_fzf'
     end
 
     if which lazygit >/dev/null 2>&1

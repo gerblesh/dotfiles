@@ -123,13 +123,9 @@ if status is-interactive
     setup_homebrew
 
     function fish_greeting
-        # if which fortune >/dev/null 2>&1; and which cowsay >/dev/null 2>&1
-        #     fortune | cowsay
-        # end
-        # if which glow >/dev/null 2>&1; and test -e ~/journal/todo.md
-        #     glow ~/journal/todo.md
-        # end
-
+        # Silverblue fix
+        set -l pwd (string replace /var/home /home $PWD)
+        cd "$pwd"
     end
 
     if which flatpak >/dev/null 2>&1

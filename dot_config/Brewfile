@@ -44,6 +44,7 @@ brew "typst"
 brew "uv"
 brew "imgcat"
 brew "fortune"
+brew "typescript-language-server"
 
 # Dev tools
 brew "zig"
@@ -53,6 +54,9 @@ brew "nvim"
 brew "luarocks"
 brew "devcontainer"
 brew "postgresql@17"
+brew "yarn"
+brew "npm"
+brew "dotnet"
 
 # Backup
 brew "chezmoi"      # Dotfile management

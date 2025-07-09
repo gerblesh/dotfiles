@@ -4,6 +4,6 @@ Comment=Custom Desktop Entry for Helix
 Exec=/home/user/.local/bin/floatterm-exec hx %F
 Keywords=helix;
 Type=Application
-MimeType=text/plain;text/x-python;text/x-csrc;inode/directory;
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
 Categories=Utility;TextEditor;
 Keywords=helix;editor;text;code;

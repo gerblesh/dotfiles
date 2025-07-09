@@ -117,7 +117,7 @@ local direction_keys = {
 local function split_nav(resize_or_move, key)
 	return {
 		key = key,
-		mods = resize_or_move == "resize" and "ALT" or "ALT|CTRL",
+		mods = resize_or_move == "resize" and "ALT|CTRL" or "ALT",
 		action = wezterm.action_callback(function(win, pane)
 			if resize_or_move == "resize" then
 				win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
@@ -151,17 +151,12 @@ config.keys = {
 	split_nav("resize", "k"),
 	split_nav("resize", "l"),
 	{
-		mods = "LEADER",
-		key = "s",
-		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
-	},
-	{
-		mods = "LEADER",
-		key = "v",
+		mods = "ALT",
+		key = "w",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		mods = "LEADER",
+		mods = "ALT",
 		key = "z",
 		action = wezterm.action.TogglePaneZoomState,
 	},
@@ -171,37 +166,27 @@ config.keys = {
 		action = wezterm.action.RotatePanes("Clockwise"),
 	},
 	{
-		mods = "LEADER",
+		mods = "ALT",
 		key = "q",
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
 	{
-		mods = "LEADER|SHIFT",
-		key = "q",
-		action = wezterm.action.CloseCurrentTab({ confirm = false }),
-	},
-	{
-		mods = "LEADER",
-		key = "c",
+		mods = "ALT",
+		key = "t",
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
 	},
-	{
-		mods = "LEADER",
-		key = "n",
-		action = wezterm.action.SpawnCommandInNewTab({ args = { "/usr/bin/fish", "-liC", "nvim" } }),
-	},
-	{ key = "1", mods = "LEADER", action = wezterm.action({ ActivateTab = 0 }) },
-	{ key = "2", mods = "LEADER", action = wezterm.action({ ActivateTab = 1 }) },
-	{ key = "3", mods = "LEADER", action = wezterm.action({ ActivateTab = 2 }) },
-	{ key = "4", mods = "LEADER", action = wezterm.action({ ActivateTab = 3 }) },
-	{ key = "5", mods = "LEADER", action = wezterm.action({ ActivateTab = 4 }) },
-	{ key = "6", mods = "LEADER", action = wezterm.action({ ActivateTab = 5 }) },
-	{ key = "7", mods = "LEADER", action = wezterm.action({ ActivateTab = 6 }) },
-	{ key = "8", mods = "LEADER", action = wezterm.action({ ActivateTab = 7 }) },
-	{ key = "9", mods = "LEADER", action = wezterm.action({ ActivateTab = 8 }) },
+	{ key = "1", mods = "ALT", action = wezterm.action({ ActivateTab = 0 }) },
+	{ key = "2", mods = "ALT", action = wezterm.action({ ActivateTab = 1 }) },
+	{ key = "3", mods = "ALT", action = wezterm.action({ ActivateTab = 2 }) },
+	{ key = "4", mods = "ALT", action = wezterm.action({ ActivateTab = 3 }) },
+	{ key = "5", mods = "ALT", action = wezterm.action({ ActivateTab = 4 }) },
+	{ key = "6", mods = "ALT", action = wezterm.action({ ActivateTab = 5 }) },
+	{ key = "7", mods = "ALT", action = wezterm.action({ ActivateTab = 6 }) },
+	{ key = "8", mods = "ALT", action = wezterm.action({ ActivateTab = 7 }) },
+	{ key = "9", mods = "ALT", action = wezterm.action({ ActivateTab = 8 }) },
 
-	{ key = "l", mods = "ALT|SHIFT", action = wezterm.action.ActivateTabRelative(1) },
-	{ key = "h", mods = "ALT|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
+	{ key = "n", mods = "CTRL|ALT", action = wezterm.action.ActivateTabRelative(1) },
+	{ key = "p", mods = "CTRL|ALT", action = wezterm.action.ActivateTabRelative(-1) },
 	-- Activate Copy Mode
 	{ key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
 	-- Paste from Copy Mode

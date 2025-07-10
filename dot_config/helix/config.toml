@@ -3,7 +3,7 @@ theme = "carbonfox_transparent"
 [editor]
 jump-label-alphabet = "jfkdls;aurieowpqnvmcxz"
 line-number = "relative"
-mouse = true
+mouse = false
 color-modes = true
 end-of-line-diagnostics = "hint"
 

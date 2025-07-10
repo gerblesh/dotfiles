@@ -1,53 +1,53 @@
-# command = /bin/fish
-# auto-update-channel = tip
-# theme = "carbonfox"
-# font-size = 13
+command = /bin/fish
+auto-update-channel = tip
+theme = "carbonfox"
+font-size = 13
 
-# background-opacity = 0.9
+background-opacity = 0.9
 
-# # shell-integration = fish
-# # shell-integration-features = no-cursor
-# # cursor-style = underline
-# # cursor-style-blink = false
+# shell-integration = fish
+# shell-integration-features = no-cursor
+# cursor-style = underline
+# cursor-style-blink = false
 
-# gtk-custom-css = style.css
-# window-decoration = false
-# gtk-titlebar = true
-# gtk-single-instance = true
-# gtk-wide-tabs = true
-# gtk-tabs-location = bottom
+gtk-custom-css = style.css
+window-decoration = false
+gtk-titlebar = true
+gtk-single-instance = true
+gtk-wide-tabs = true
+gtk-tabs-location = bottom
 
-# window-padding-y = 0 
-# window-padding-x = 0
-# window-padding-balance = true
-# window-step-resize = false
+window-padding-y = 0 
+window-padding-x = 0
+window-padding-balance = true
+window-step-resize = false
 
-# # Split/window management
-# # keybind = alt+w=new_split:down
-# keybind = alt+w=new_split:auto
-# keybind = alt+q=close_surface
-# keybind = alt+t=new_tab
+# Split/window management
+# keybind = alt+w=new_split:down
+keybind = alt+w=new_split:auto
+keybind = alt+q=close_surface
+keybind = alt+t=new_tab
 
-# # Split navigation
-# keybind = alt+h=goto_split:left
-# keybind = alt+j=goto_split:down
-# keybind = alt+k=goto_split:up
-# keybind = alt+l=goto_split:right
+# Split navigation
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:down
+keybind = alt+k=goto_split:up
+keybind = alt+l=goto_split:right
 
-# # Resize Splits
-# keybind = ctrl+alt+h=resize_split:left,10
-# keybind = ctrl+alt+j=resize_split:down,10
-# keybind = ctrl+alt+k=resize_split:up,10
-# keybind = ctrl+alt+l=resize_split:right,10
-# keybind = alt+z=toggle_split_zoom
-# # keybind = ctrl+shift+j=write_screen_file:open
+# Resize Splits
+keybind = ctrl+alt+h=resize_split:left,10
+keybind = ctrl+alt+j=resize_split:down,10
+keybind = ctrl+alt+k=resize_split:up,10
+keybind = ctrl+alt+l=resize_split:right,10
+keybind = alt+z=toggle_split_zoom
 # keybind = ctrl+shift+j=write_screen_file:open
+keybind = ctrl+shift+j=write_screen_file:open
 
-# quick-terminal-autohide = false
+quick-terminal-autohide = false
 
-# window-theme = ghostty
+window-theme = ghostty
 
-# font-family = SF Mono
+font-family = SF Mono
 
-# # FIXME: temp (until more programs support ghostty terminfo)!
-# term = kitty
+# FIXME: temp (until more programs support ghostty terminfo)!
+term = kitty

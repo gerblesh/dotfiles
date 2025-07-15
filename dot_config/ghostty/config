@@ -5,10 +5,10 @@ font-size = 13
 
 background-opacity = 0.9
 
-# shell-integration = fish
-# shell-integration-features = no-cursor
-# cursor-style = underline
-# cursor-style-blink = false
+shell-integration = fish
+shell-integration-features = no-cursor
+cursor-style = underline
+cursor-style-blink = false
 
 gtk-custom-css = style.css
 window-decoration = false

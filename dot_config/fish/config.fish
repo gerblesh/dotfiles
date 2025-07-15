@@ -92,6 +92,9 @@ if status is-interactive
         if test -d (brew --prefix)"/share/fish/vendor_completions.d"
             set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
         end
+        # set -gx LDFLAGS "-L$HOMEBREW_PREFIX/lib $LDFLAGS"
+        # set -gx CPPFLAGS "-I$HOMEBREW_PREFIX/include $CPPFLAGS"
+        # set -gx PKG_CONFIG_PATH "$HOMEBREW_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
     end
 
     fish_add_path -P --prepend /usr/local/bin

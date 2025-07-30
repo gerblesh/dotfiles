@@ -111,7 +111,7 @@ SETUVAR async_prompt_buffer_b291833d7c4a9bbaae5a5f5f27c81cecd139546d:\x1b\x5b1m\
 SETUVAR async_prompt_buffer_b2937061573dd3107b4f7ec535e8f73fd3ad69c6:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_b44e3fcb7f57fbfa4a01710956caa975f720fb87:\x1b\x5b1m\x1b\x5b35m\x20\x28live\x20\x2a\x21\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_b668b0fe206e770e67f0839a6b5c21ba2c1b8f15:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x20\x2a\x21\x29\x1b\x28B\x1b\x5bm
-SETUVAR async_prompt_buffer_bb9b1f73e76e7d042ca0b077f80c3d19ef30d783:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x20\u25cf\x20\u21911\x29\x1b\x28B\x1b\x5bm
+SETUVAR async_prompt_buffer_bb9b1f73e76e7d042ca0b077f80c3d19ef30d783:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_bd02d90b78d2fdcecb85257bce9a42d5583cc234:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x20\x2a\x29\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_c0dc1f28ae495ba27d92ed550f32a1c53c3e8623:\x1b\x5b1m\x1b\x5b35m\x1b\x28B\x1b\x5bm
 SETUVAR async_prompt_buffer_c5d336597f74955d3b22da75ac1716cbaa18a525:\x1b\x5b1m\x1b\x5b35m\x20\x28main\x29\x1b\x28B\x1b\x5bm

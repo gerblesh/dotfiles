@@ -181,6 +181,10 @@ if status is-interactive
             commandline -f end-of-line
         end
     end
+
+    function dnfzf
+        dnf list --available | grep -Ev "Available packages" | fzf --preview 'dnf info {1}'
+    end
     alias psql=psql-17
 
     bind --mode insert \cn __select_from_last

@@ -1,44 +1,43 @@
-theme = "carbonfox_transparent"
+# theme = "carbonfox_transparent"
 
-[editor]
-jump-label-alphabet = "jfkdls;aurieowpqnvmcxz"
-line-number = "relative"
-mouse = false
-color-modes = true
-end-of-line-diagnostics = "hint"
+# [editor]
+# jump-label-alphabet = "jfkdls;aurieowpqnvmcxz"
+# mouse = false
+# color-modes = true
+# end-of-line-diagnostics = "hint"
 
-[editor.cursor-shape]
-insert = "bar"
-normal = "block"
-select = "underline"
+# [editor.cursor-shape]
+# insert = "bar"
+# normal = "block"
+# select = "underline"
 
-[editor.whitespace]
-render = "all"
+# [editor.whitespace]
+# render = "all"
 
-[editor.inline-diagnostics]
-cursor-line = "warning"
+# [editor.inline-diagnostics]
+# cursor-line = "warning"
 
-[editor.indent-guides]
-render = true
-character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
-skip-levels = 1
+# [editor.indent-guides]
+# render = true
+# character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+# skip-levels = 1
 
-[editor.lsp]
-display-inlay-hints = false
+# [editor.lsp]
+# display-inlay-hints = false
 
-[editor.soft-wrap]
-enable = true
-max-wrap = 25 # increase value to reduce forced mid-word wrapping
-max-indent-retain = 0
+# [editor.soft-wrap]
+# enable = true
+# max-wrap = 25 # increase value to reduce forced mid-word wrapping
+# max-indent-retain = 0
 
-[keys.normal]
-' ' = {'l'=':o .github', 'W'=':wa', 'q'=':wqa', 'Q'=':q!'}
-"ret" = "goto_word"
-'L' = "move_next_sub_word_end"
-'H' = "move_prev_sub_word_start"
+# [keys.normal]
+# ' ' = {'l'=':o .github', 'W'=':wa', 'q'=':wqa', 'Q'=':q!'}
+# "ret" = "goto_word"
+# 'L' = "move_next_sub_word_end"
+# 'H' = "move_prev_sub_word_start"
 
-[keys.normal.space]
+# [keys.normal.space]
 # blursed regex for removing the file extension and replacing it with .pdf
-z = ":sh zathura \"$(echo %{buffer_name} | sed 's/\\.[^.]*$/.pdf/')\" "
-'i' = ':yank-diagnostic'
+# z = ":sh zathura \"$(echo %{buffer_name} | sed 's/\\.[^.]*$/.pdf/')\" "
+# 'i' = ':yank-diagnostic'
 # 'i' = "global_refactor"

@@ -1,11 +1,8 @@
 (require "helix/configuration.scm")
-(require "helix/components.scm")
-(require "helix/editor.scm")
-(require "helix/misc.scm")
-(require (prefix-in helix. "helix/commands.scm"))
-(require (prefix-in helix.static. "helix/static.scm"))
-(require-builtin helix/core/text as text.)
 (require "cogs/keymaps.scm")
+(require "helix/ext.scm")
+(require (prefix-in helix.static. "helix/static.scm"))
+(require (prefix-in helix. "helix/commands.scm"))
 
 ; Actual config
 (helix.theme "carbonfox_transparent")
@@ -52,18 +49,3 @@
 ;; Opens the init.scm file
 (define (open-init-scm)
   (helix.open (helix.static.get-init-scm-path)))
-
-;;@doc
-;; Eval prompt
-(define (evalp)
-  (push-component! (prompt "$ " (lambda (expr) (set-status! (eval-string expr))))))
-
-(define (get-document-as-slice)
-  (let* ([focus (editor-focus)]
-         [focus-doc-id (editor->doc-id focus)])
-    (text.rope->string (editor->text focus-doc-id))))
-
-;;@doc
-;; Eval the current buffer, morally equivalent to load-buffer!
-(define (eval-buffer)
-  (eval-string (get-document-as-slice)))

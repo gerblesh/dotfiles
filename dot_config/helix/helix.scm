@@ -22,6 +22,7 @@
                 (space (z ":sh zathura \"$(echo %{buffer_name} | sed 's/\\.[^.]*$/.pdf/')\"")
                        (i ":yank-diagnostic")
                        (l ":o .github"))))
+(rainbow-brackets #t)
 
 ; LSP config
 (define-lsp "steel-language-server" (command "steel-language-server") (args '()))
@@ -35,17 +36,12 @@
             (command "tinymist")
             (config (exportPdf "onType") (outputPath "$root/$dir/$name")))
 
-; helper scheme functions
+; helper scheme functions from ext.scm
+(define (open-helix-scm)
+  (helix.open (helix.static.get-helix-scm-path)))
+(define (open-init-scm)
+  (helix.open (helix.static.get-init-scm-path)))
 (provide open-helix-scm
          open-init-scm
          evalp
          eval-buffer)
-;;@doc
-;; Open the helix.scm file
-(define (open-helix-scm)
-  (helix.open (helix.static.get-helix-scm-path)))
-
-;;@doc
-;; Opens the init.scm file
-(define (open-init-scm)
-  (helix.open (helix.static.get-init-scm-path)))

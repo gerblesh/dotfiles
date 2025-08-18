@@ -22,6 +22,29 @@
 # roots = [ "build.hxml" ]
 # indent = { tab-width = 4, unit = "    " }
 
+[[language]]
+name = "kconfig"
+file-types = ["kconfig", "kconfig*."]
+scope = "source.kconfig"
+comment-token = "#"
+
+[[grammar]]
+name = "kconfig"
+source = { git = "https://github.com/tree-sitter-grammars/tree-sitter-kconfig" , rev = "9ac99fe4c0c27a35dc6f757cef534c646e944881" }
+
+
+[[language]]
+name = "batch"
+file-types = ["bat"]
+scope = "source.batch"
+
+[[grammar]]
+name = "batch"
+source = { git = "https://github.com/davidevofficial/tree-sitter-batch" , rev = "737a031b42240bf61bf7ea5e4356d4e0580dd6d9" }
+
+# [language-server.tinymist]
+# command = "tinymist"
+# config = { exportPdf = "onType", outputPath = "$root/$dir/$name" }
 # [[grammar]]
 # name = "haxe"
 # source = { git = "https://github.com/gerblesh/tree-sitter-haxe" , rev = "try-catch-while-for-enum" }

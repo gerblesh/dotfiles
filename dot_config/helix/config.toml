@@ -1,26 +1,27 @@
 # theme = "carbonfox_transparent"
 
-# [editor]
-# jump-label-alphabet = "jfkdls;aurieowpqnvmcxz"
-# mouse = false
+# Only what is currently not merged in the config.toml
+[editor]
+jump-label-alphabet = "jfkdls;aurieowpqnvmcxz"
 # color-modes = true
 # end-of-line-diagnostics = "hint"
+line-number = "relative"
 
 # [editor.cursor-shape]
 # insert = "bar"
 # normal = "block"
 # select = "underline"
 
-# [editor.whitespace]
-# render = "all"
+[editor.whitespace]
+render = "all"
 
 # [editor.inline-diagnostics]
 # cursor-line = "warning"
 
-# [editor.indent-guides]
-# render = true
-# character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
-# skip-levels = 1
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
 
 # [editor.lsp]
 # display-inlay-hints = false

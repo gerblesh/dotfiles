@@ -67,3 +67,4 @@ brew "yt-dlp"   # Download anything from anywhere
 brew "xdg-ninja", args: ["HEAD"] # Declutter your HOME
 brew "tlrc"     # Man pages, but straight to the point
 brew "trash-cli"
+brew "mimic"

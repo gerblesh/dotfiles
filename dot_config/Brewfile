@@ -1,5 +1,7 @@
 tap "caarlos0/tap"
 tap "danielgatis/imgcat"
+tap homebrew/cask
+cask font-maple-mono-nf-cn
 
 # Modern Unix
 brew "fzf"
@@ -45,6 +47,7 @@ brew "uv"
 brew "imgcat"
 brew "fortune"
 brew "typescript-language-server"
+brew "odin"
 
 # Dev tools
 brew "zig"

@@ -16,3 +16,4 @@ image/webp=imv.desktop;
 image/gif=imv.desktop;
 image/heif=org.chromium.Chromium.desktop;
 application/x-zerosize=helix.desktop;
+text/plain=org.racket_lang.Racket.desktop;

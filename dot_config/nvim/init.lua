@@ -140,49 +140,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-
-	-- {
-	-- 	"3rd/image.nvim",
-	-- 	event = "VeryLazy",
-	-- 	dependencies = {
-	-- 		{
-	-- 			"nvim-treesitter/nvim-treesitter",
-	-- 		},
-	-- 	},
-	-- 	opts = {
-	-- 		backend = "kitty",
-	-- 		integrations = {
-	-- 			markdown = {
-	-- 				enabled = true,
-	-- 				clear_in_insert_mode = false,
-	-- 				download_remote_images = true,
-	-- 				only_render_image_at_cursor = false,
-	-- 				filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
-	-- 			},
-	-- 			neorg = {
-	-- 				enabled = true,
-	-- 				clear_in_insert_mode = false,
-	-- 				download_remote_images = true,
-	-- 				only_render_image_at_cursor = false,
-	-- 				filetypes = { "norg" },
-	-- 			},
-	-- 		},
-	-- 		max_width = nil,
-	-- 		max_height = nil,
-	-- 		max_width_window_percentage = nil,
-	-- 		max_height_window_percentage = 50,
-	-- 		kitty_method = "normal",
-	-- 	},
-	-- },
-	-- NOTE: Plugins can also be added by using a table,
-	-- with the first argument being the link and the following
-	-- keys can be used to configure plugin behavior/loading/etc.
-	--
-	-- Use `opts = {}` to force a plugin to be loaded.
-	--
-	--  This is equivalent to:
-	--    require('Comment').setup({})
+	"tpope/vim-sleuth", 
 	{
 		"DreamMaoMao/yazi.nvim",
 		dependencies = {
@@ -222,32 +180,6 @@ require("lazy").setup({
 	},
 	-- "gc" to comment visual regions/lines
 	{ "numToStr/Comment.nvim", opts = {} },
-	-- {
-	-- 	"mrjones2014/smart-splits.nvim",
-	-- 	lazy = false,
-	-- 	config = function()
-	-- 		vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
-	-- 		vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
-	-- 		vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
-	-- 		vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
-	-- 		-- moving between splits
-	-- 		vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
-	-- 		vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
-	-- 		vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
-	-- 		vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
-	-- 		-- swapping buffers between windows
-	-- 		-- vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
-	-- 		-- vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
-	-- 		-- vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
-	-- 		-- vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
-	-- 	end,
-	-- },
-
-	-- Here is a more advanced example where we pass configuration
-	-- options to `gitsigns.nvim`. This is equivalent to the following lua:
-	--    require('gitsigns').setup({ ... })
-	--
-	-- See `:help gitsigns` to understand what the configuration keys do
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {

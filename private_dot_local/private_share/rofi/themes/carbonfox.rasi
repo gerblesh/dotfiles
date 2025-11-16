@@ -1,5 +1,5 @@
 * {
-    bg-col:  #161616;
+    bg-col:  #000000;
     bg-col-light: #161616;
     border-col: #484848;
     selected-col: #52bdff;

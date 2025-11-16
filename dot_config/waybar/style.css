@@ -1,5 +1,7 @@
-@define-color bg0 #161616;
-@define-color bg #2a2a2a;
+@define-color bg0 #000000;
+/*@define-color bg0 #161616;*/
+/* @define-color bg #2a2a2a; */
+@define-color bg #161616;
 @define-color fg #f2f4f8;
 @define-color sel #484848;
 @define-color urg #ee5396;
@@ -9,6 +11,7 @@
 @define-color green #25be6a;
 @define-color blue #78a9ff;
 @define-color magenta #be95ff;
+@define-color bg1 #2a2a2a;
 
 .month {
     color: @green;
@@ -84,8 +87,8 @@ button:hover {
 #workspaces button {
     padding: 2px 5px;
     margin: 2px 0px;
-    color: @magenta;
-    box-shadow: inset 3px 0 @magenta;
+    color: @sel;
+    box-shadow: inset 3px 0 @bg1;
     border-radius: 0;
 }
 

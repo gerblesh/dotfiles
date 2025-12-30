@@ -182,6 +182,8 @@ if status is-interactive
         end
     end
 
+    alias sudo 'run0 --background='
+
     function dnfzf
         dnf list --available | grep -Ev "Available packages" | fzf --preview 'dnf info {1}'
     end

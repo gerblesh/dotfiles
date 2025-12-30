@@ -5,7 +5,7 @@
 (require (prefix-in helix. "helix/commands.scm"))
 (require-builtin helix/core/text)
 (require "modeline/modeline.scm")
-(require "cogs/keymaps.scm")
+(require "helix/keymaps.scm")
 
 ; Actual config
 (helix.theme "carbonfox_transparent")
@@ -74,6 +74,4 @@
          open-init-scm
          evalp
          eval-buffer
-         fmt-lambda
-         modeline-enable
-         refresh-modeline)
+         fmt-lambda)

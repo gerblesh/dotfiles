@@ -1,11 +1,10 @@
 (require "helix/configuration.scm")
 (require (prefix-in helix. "helix/commands.scm"))
-(require "helix/ext.scm")
 (require (prefix-in helix.static. "helix/static.scm"))
-(require (prefix-in helix. "helix/commands.scm"))
+(require "helix/ext.scm")
 (require-builtin helix/core/text)
-(require "modeline/modeline.scm")
 (require "helix/keymaps.scm")
+(require "helix/editor.scm")
 
 ; Actual config
 (helix.theme "carbonfox_transparent")
@@ -24,10 +23,11 @@
         (normal (ret "goto_word")
                 (L "move_next_sub_word_end")
                 (H "move_prev_sub_word_start")
+                (g (b ":sh git blame -L %{cursor_line},%{cursor_line} %{buffer_name}"))
                 (space (z ":sh zathura \"$(echo %{buffer_name} | sed 's/\\.[^.]*$/.pdf/')\"")
+                       (b (c ":breadcrumbs"))
                        (i ":yank-diagnostic")
-                       (l ":o .github")
-                       (b ":sh git blame -L %{cursor_line},%{cursor_line} %{buffer_name}"))))
+                       (l ":o .github"))))
 
 ; LSP config
 (define-lsp "steel-language-server" (command "steel-language-server") (args '()))
@@ -43,35 +43,20 @@
 (define-lsp "godot" (command "nc") (args '("127.0.0.1" "6005")))
 (define-language "gdscript" (language-servers '("godot")))
 
-;; Plugins
-
 ; config helpers
 (define (open-helix-scm)
   (helix.open (helix.static.get-helix-scm-path)))
 (define (open-init-scm)
   (helix.open (helix.static.get-init-scm-path)))
-(define (fmt-lambda)
 
-  (define current-selection (helix.static.current-selection-object))
-
-  (helix.static.select_all)
-  (helix.static.regex-selection "lambda\n")
-  (helix.static.replace-selection-with "λ\n")
-
-  (helix.static.select_all)
-  (helix.static.regex-selection "lambda ")
-  (helix.static.replace-selection-with "λ ")
-
-  (helix.static.merge_selections)
-
-  (helix.static.move_visual_line_down)
-  (helix.static.move_visual_line_up))
-
-(modeline-enable)
+(define (install)
+  (let ([path (trim-end-matches (helix.static.get-init-scm-path) "init.scm")])
+    (helix.run-shell-command (string-append "forge install " path "cog"))))
 
 ; helper scheme functions from ext.scm
 (provide open-helix-scm
          open-init-scm
          evalp
-         eval-buffer
-         fmt-lambda)
+         install
+         helix.static.get-init-scm-path
+         eval-buffer)

@@ -48,6 +48,8 @@ set -g __fish_git_prompt_showdirtystate true
 set -g __fish_git_prompt_showstashstate true
 set -g __fish_git_prompt_showuntrackedfiles true
 set -g __fish_git_prompt_showcolorhints false
+set -g __fish_git_prompt_showstashstate true
+set -g __fish_git_prompt_char_stashstate '\$'
 set -g __fish_git_prompt_char_upstream_behind " ↓"
 set -g __fish_git_prompt_char_upstream_ahead " ↑"
 set -g __fish_git_prompt_char_stagedstate "●"

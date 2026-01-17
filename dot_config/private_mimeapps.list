@@ -7,6 +7,7 @@ image/webp=imv.desktop
 application/x-zerosize=helix.desktop
 text/plain=helix.desktop
 text/txt=helix.desktop
+application/octet-stream=helix.desktop
 
 [Added Associations]
 image/jpeg=imv-dir.desktop;
@@ -17,3 +18,4 @@ image/gif=imv.desktop;
 image/heif=org.chromium.Chromium.desktop;
 application/x-zerosize=helix.desktop;
 text/plain=org.racket_lang.Racket.desktop;
+application/octet-stream=helix.desktop;
